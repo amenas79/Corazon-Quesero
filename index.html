@@ -100,93 +100,92 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { overflow-x: hidden; }
         body { font-family: 'Poppins', sans-serif; color: #333333; background-color: #FFFFFF; line-height: 1.6; }
         h1, h2, h3, h4 { font-family: 'Arsenica Antiqua', serif; font-weight: 700; line-height: 1.3; }
         .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Menú Móvil */
-        @media (max-width: 768px) {
-            #mobileMenuBtn { display: block !important; }
-            #navMenu {
-                position: fixed;
-                top: 80px;
-                right: -100%;
-                flex-direction: column !important;
-                background: #FFFFFF;
-                width: 80%;
-                max-width: 300px;
-                height: calc(100vh - 80px);
-                padding: 30px;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-                transition: right 0.3s ease-in-out;
-                gap: 15px;
-                align-items: flex-start;
-                z-index: 999;
-            }
-            #navMenu.active { right: 0; }
-            #navMenu li { width: 100%; list-style: none; }
-            #navMenu a {
-                display: block;
-                width: 100%;
-                padding: 15px 20px;
-                text-decoration: none;
-                color: #333333;
-                font-weight: 600;
-                font-size: 1.1rem;
-                border-radius: 12px;
-                transition: all 0.2s ease;
-            }
-            #navMenu a:hover, #navMenu a.active {
-                color: #1F8A84;
-                background: rgba(31, 138, 132, 0.1);
-            }
-        }
-
-        @media (min-width: 769px) {
-            #mobileMenuBtn { display: none !important; }
-            #navMenu {
-                position: static !important;
-                width: auto !important;
-                height: auto !important;
-                padding: 0 !important;
-                background: transparent !important;
-                box-shadow: none !important;
-                flex-direction: row !important;
-                align-items: center !important;
-                right: auto !important;
-            }
-        }
-
-        /* Botones Flotantes */
-        .floating-buttons {
+        /* ── HEADER ── */
+        #mainHeader {
+            background: #FFFFFF;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 9997;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
-        .floating-btn {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+        #headerInner {
             display: flex;
             align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            justify-content: space-between;
+            padding: 0 20px;
+            height: 70px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
+
+        /* Logo */
+        #headerLogo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            flex-shrink: 0;
+            min-width: 0;
+        }
+        #headerLogo img { height: 48px; width: auto; display: block; }
+        #logoText { line-height: 1.1; padding-left: 8px; border-left: 3px solid #fd6f2f; }
+        #logoText .logo-top { font-family: 'Arsenica Antiqua', serif; font-size: 1.1rem; color: #333333; font-weight: 400; white-space: nowrap; }
+        #logoText .logo-bottom { font-family: 'Arsenica Antiqua', serif; font-size: 1.4rem; color: #1F8A84; font-weight: 700; white-space: nowrap; }
+
+        /* Nav escritorio */
+        #navDesktop { display: flex; align-items: center; }
+        #navDesktop ul { display: flex; list-style: none; gap: 4px; margin: 0; padding: 0; }
+        #navDesktop a { text-decoration: none; color: #666633; font-weight: 600; font-size: 0.9rem; padding: 7px 11px; border-radius: 18px; display: block; transition: all 0.2s; white-space: nowrap; }
+        #navDesktop a:hover { color: #1F8A84; background: rgba(31,138,132,0.1); }
+        #navDesktop a.active { color: #1F8A84; font-weight: 700; background: rgba(31,138,132,0.1); }
+
+        /* Lado derecho header */
+        #headerRight { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+
+        /* Carrito */
+        #cartIcon { position: relative; font-size: 1.4rem; color: #fd6f2f; cursor: pointer; }
+        #cartCount { position: absolute; top: -8px; right: -10px; background: #1F8A84; color: #fff; font-size: 0.65rem; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid #fff; }
+
+        /* Hamburguesa */
+        #mobileMenuBtn { background: none; border: none; font-size: 1.5rem; color: #fd6f2f; cursor: pointer; padding: 4px; line-height: 1; display: none; }
+
+        /* Menú móvil dropdown */
+        #mobileNav { display: none; background: #FFFFFF; border-top: 2px solid #ffcc33; }
+        #mobileNav a { display: block; padding: 14px 25px; color: #333333; font-weight: 600; text-decoration: none; font-size: 1rem; border-bottom: 1px solid #F6F1E8; }
+        #mobileNav a:first-child { color: #1F8A84; font-weight: 700; }
+        #mobileNav a:last-child { border-bottom: none; }
+        #mobileNav a:active { background: #F6F1E8; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            #navDesktop { display: none !important; }
+            #mobileMenuBtn { display: block !important; }
+            #logoText .logo-top { font-size: 1rem; }
+            #logoText .logo-bottom { font-size: 1.3rem; }
+            #headerLogo img { height: 42px; }
+        }
+        @media (min-width: 769px) {
+            #mobileNav { display: none !important; }
+            #mobileMenuBtn { display: none !important; }
+        }
+
+        /* ── BOTONES FLOTANTES ── */
+        .floating-buttons { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9997; }
+        .floating-btn { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
         .floating-btn:hover { transform: scale(1.1); }
         .floating-btn:active { transform: scale(0.95); }
         .search-btn { background: #fd6f2f; color: #FFFFFF; border: none; }
         .whatsapp-btn { background: #25D366; color: #FFFFFF; text-decoration: none; }
-
         @media (max-width: 768px) {
             .floating-buttons { bottom: 20px; right: 20px; }
-            .floating-btn { width: 55px; height: 55px; }
+            .floating-btn { width: 50px; height: 50px; }
         }
 
         /* Scroll personalizado */
@@ -198,60 +197,48 @@
 <body>
 
 <!-- Header -->
-<header style="background: #FFFFFF; box-shadow: 0 4px 20px rgba(0,0,0,0.1); position: fixed; width: 100%; top: 0; z-index: 1000;">
-    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; max-width: 1200px; margin: 0 auto; height: 70px;">
-        
+<header id="mainHeader">
+    <div id="headerInner">
+
         <!-- Logo -->
-        <a href="#" style="display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0;" onclick="scrollToTop(); return false;">
-            <img src="logo-corazon-quesero.png" alt="Corazón Quesero" style="height: 50px; width: auto; display: block;">
-            <div style="line-height: 1; padding-left: 8px; border-left: 3px solid #fd6f2f;">
-                <div style="font-family: 'Arsenica Antiqua', serif; font-size: 1.2rem; color: #333333; font-weight: 400;">Corazón</div>
-                <div style="font-family: 'Arsenica Antiqua', serif; font-size: 1.5rem; color: #1F8A84; font-weight: 700;">Quesero</div>
+        <a id="headerLogo" href="#" onclick="scrollToTop(); return false;">
+            <img src="logo-corazon-quesero.png" alt="Corazón Quesero">
+            <div id="logoText">
+                <div class="logo-top">Corazón</div>
+                <div class="logo-bottom">Quesero</div>
             </div>
         </a>
 
         <!-- Nav escritorio -->
-        <nav id="navDesktop" style="display: flex; gap: 5px; align-items: center;">
-            <ul id="navMenu" style="display: flex; list-style: none; gap: 5px; margin: 0; padding: 0;">
-                <li><a href="#" onclick="scrollToTop(); return false;" style="text-decoration: none; color: #1F8A84; font-weight: 700; font-size: 0.95rem; padding: 8px 12px; border-radius: 20px; background: rgba(31,138,132,0.1); display: block;">Inicio</a></li>
-                <li><a href="#productos" style="text-decoration: none; color: #666633; font-weight: 600; font-size: 0.95rem; padding: 8px 12px; border-radius: 20px; display: block; transition: all 0.2s;">Productos</a></li>
-                <li><a href="#nosotros" style="text-decoration: none; color: #666633; font-weight: 600; font-size: 0.95rem; padding: 8px 12px; border-radius: 20px; display: block; transition: all 0.2s;">Nosotros</a></li>
-                <li><a href="#contacto" style="text-decoration: none; color: #666633; font-weight: 600; font-size: 0.95rem; padding: 8px 12px; border-radius: 20px; display: block; transition: all 0.2s;">Contacto</a></li>
+        <nav id="navDesktop">
+            <ul>
+                <li><a href="#" class="active" onclick="scrollToTop(); return false;">Inicio</a></li>
+                <li><a href="#productos" onclick="scrollToSection('productos'); return false;">Productos</a></li>
+                <li><a href="#nosotros" onclick="scrollToSection('nosotros'); return false;">Nosotros</a></li>
+                <li><a href="#contacto" onclick="scrollToSection('contacto'); return false;">Contacto</a></li>
             </ul>
         </nav>
 
-        <!-- Lado derecho: carrito + hamburguesa -->
-        <div style="display: flex; align-items: center; gap: 15px; flex-shrink: 0;">
-            <!-- Carrito (siempre visible) -->
-            <div id="cartIcon" style="position: relative; font-size: 1.4rem; color: #fd6f2f; cursor: pointer;" onclick="toggleCart();">
+        <!-- Lado derecho -->
+        <div id="headerRight">
+            <div id="cartIcon" onclick="toggleCart();">
                 <i class="fas fa-shopping-cart"></i>
-                <span id="cartCount" style="position: absolute; top: -10px; right: -12px; background: #1F8A84; color: #FFFFFF; font-size: 0.7rem; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid #FFFFFF;">0</span>
+                <span id="cartCount">0</span>
             </div>
-            <!-- Botón hamburguesa (solo móvil) -->
-            <button id="mobileMenuBtn" onclick="toggleMobileMenu()" style="background: none; border: none; font-size: 1.5rem; color: #fd6f2f; cursor: pointer; display: none; padding: 5px;">
+            <button id="mobileMenuBtn" onclick="toggleMobileMenu()">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </div>
 
-    <!-- Menú móvil desplegable -->
-    <div id="mobileNav" style="display: none; background: #FFFFFF; border-top: 2px solid #ffcc33; padding: 10px 0;">
-        <a href="#" onclick="scrollToTop(); closeMobileMenu(); return false;" style="display: block; padding: 14px 25px; color: #1F8A84; font-weight: 700; text-decoration: none; font-size: 1.05rem; border-bottom: 1px solid #F6F1E8;">🏠 Inicio</a>
-        <a href="#productos" onclick="scrollToSection('productos'); closeMobileMenu(); return false;" style="display: block; padding: 14px 25px; color: #333333; font-weight: 600; text-decoration: none; font-size: 1.05rem; border-bottom: 1px solid #F6F1E8;">🧀 Productos</a>
-        <a href="#nosotros" onclick="scrollToSection('nosotros'); closeMobileMenu(); return false;" style="display: block; padding: 14px 25px; color: #333333; font-weight: 600; text-decoration: none; font-size: 1.05rem; border-bottom: 1px solid #F6F1E8;">👥 Nosotros</a>
-        <a href="#contacto" onclick="scrollToSection('contacto'); closeMobileMenu(); return false;" style="display: block; padding: 14px 25px; color: #333333; font-weight: 600; text-decoration: none; font-size: 1.05rem;">📬 Contacto</a>
+    <!-- Menú móvil -->
+    <div id="mobileNav">
+        <a href="#" onclick="scrollToTop(); closeMobileMenu(); return false;">🏠 Inicio</a>
+        <a href="#productos" onclick="scrollToSection('productos'); closeMobileMenu(); return false;">🧀 Productos</a>
+        <a href="#nosotros" onclick="scrollToSection('nosotros'); closeMobileMenu(); return false;">👥 Nosotros</a>
+        <a href="#contacto" onclick="scrollToSection('contacto'); closeMobileMenu(); return false;">📬 Contacto</a>
     </div>
 </header>
-
-<style>
-    @media (max-width: 768px) {
-        #navDesktop { display: none !important; }
-        #mobileMenuBtn { display: block !important; }
-    }
-    @media (min-width: 769px) {
-        #mobileNav { display: none !important; }
-    }
-</style>
 
 <!-- Modal Carrito -->
 <div id="cartModal" style="position: fixed; top: 0; right: -100%; width: 400px; height: 100vh; background: #FFFFFF; box-shadow: -5px 0 25px rgba(0,0,0,0.2); z-index: 9999; transition: all 0.3s ease; overflow-y: auto;">
@@ -313,7 +300,7 @@
 <div id="cartOverlay" onclick="toggleCart()" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.6); z-index: 9998; display: none; opacity: 0; transition: opacity 0.3s ease;"></div>
 
 <!-- Hero Section -->
-<section class="hero" id="inicio" style="background: #000000; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; text-align: center; color: white; margin-top: 80px; position: relative; padding: 80px 0;">
+<section class="hero" id="inicio" style="background: #000000; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; text-align: center; color: white; margin-top: 70px; position: relative; padding: 80px 0;">
     <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://images.unsplash.com/photo-1626082927686-0c3f6c7c7c7c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; opacity: 0.5;"></div>
 
     <div class="container hero-content" style="max-width: 1100px; margin: 0 auto; padding: 20px; position: relative; z-index: 1;">
@@ -1106,7 +1093,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function initializeElements() {
     window.mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    window.navMenu = document.getElementById('navMenu');
+    window.navMenu = document.getElementById('mobileNav');
     window.cartCount = document.getElementById('cartCount');
     window.cartModal = document.getElementById('cartModal');
     window.cartOverlay = document.getElementById('cartOverlay');
