@@ -1,95 +1,3 @@
-<!-- Fuentes Google -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Arsenica+Antiqua:wght@700&display=swap" rel="stylesheet">
-
-<!-- Iconos Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<!-- Estilos base para navegación móvil -->
-<style>
-    body {
-        font-family: 'Poppins', sans-serif;
-        background-color: #F6F1E8;
-        color: #2E2E2E;
-        margin: 0;
-        padding: 0;
-    }
-    
-    #navMenu a:hover, #navMenu a.active {
-        color: #1F8A84;
-    }
-    
-    @media (max-width: 768px) {
-        #navMenu {
-            position: fixed;
-            top: 70px;
-            right: -100%;
-            flex-direction: column;
-            background: #FFFFFF;
-            width: 80%;
-            height: calc(100vh - 70px);
-            padding: 30px;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-        #navMenu.active {
-            right: 0;
-        }
-		/* Animación para el botón flotante */
-	#searchButton:hover {
-		transform: scale(1.1);
-		box-shadow: 0 6px 25px rgba(253, 111, 47, 0.5);
-	}
-
-	#searchButton:active {
-		transform: scale(0.95);
-	}
-
-	/* Scroll personalizado para resultados */
-	#searchModalResults::-webkit-scrollbar {
-		width: 8px;
-	}
-
-	#searchModalResults::-webkit-scrollbar-track {
-		background: #F6F1E8;
-		border-radius: 10px;
-	}
-
-	#searchModalResults::-webkit-scrollbar-thumb {
-		background: #fd6f2f;
-		border-radius: 10px;
-	}
-
-	#searchModalResults::-webkit-scrollbar-thumb:hover {
-		background: #1F8A84;
-	}
-
-	/* Responsive */
-	@media (max-width: 768px) {
-		#searchButton {
-			bottom: 20px;
-			right: 20px;
-			width: 55px;
-			height: 55px;
-			font-size: 1.3rem;
-		}
-	}
-    }
-	@media (max-width: 768px) {
-			/* Botones flotantes en móvil */
-			div[style*="position: fixed; bottom: 30px; right: 30px"] {
-				bottom: 20px;
-				right: 20px;
-			}
-			
-			div[style*="position: fixed; bottom: 30px; right: 30px"] button,
-			div[style*="position: fixed; bottom: 30px; right: 30px"] a {
-				width: 55px;
-				height: 55px;
-				font-size: 1.3rem;
-			}
-		}
-</style
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -102,7 +10,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { overflow-x: hidden; }
         body { font-family: 'Poppins', sans-serif; color: #333333; background-color: #FFFFFF; line-height: 1.6; }
-        h1, h2, h3, h4 { font-family: 'Arsenica Antiqua', serif; font-weight: 700; line-height: 1.3; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-height: 1.3; }
         .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -136,8 +44,8 @@
         }
         #headerLogo img { height: 48px; width: auto; display: block; }
         #logoText { line-height: 1.1; padding-left: 8px; border-left: 3px solid #fd6f2f; }
-        #logoText .logo-top { font-family: 'Arsenica Antiqua', serif; font-size: 1.1rem; color: #333333; font-weight: 400; white-space: nowrap; }
-        #logoText .logo-bottom { font-family: 'Arsenica Antiqua', serif; font-size: 1.4rem; color: #1F8A84; font-weight: 700; white-space: nowrap; }
+        #logoText .logo-top { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #333333; font-weight: 400; white-space: nowrap; }
+        #logoText .logo-bottom { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #1F8A84; font-weight: 700; white-space: nowrap; }
 
         /* Nav escritorio */
         #navDesktop { display: flex; align-items: center; }
@@ -244,7 +152,7 @@
 <div id="cartModal" style="position: fixed; top: 0; right: -100%; width: 400px; height: 100vh; background: #FFFFFF; box-shadow: -5px 0 25px rgba(0,0,0,0.2); z-index: 9999; transition: all 0.3s ease; overflow-y: auto;">
     <div style="padding: 20px;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 3px solid #fd6f2f;">
-            <h3 style="font-family: 'Arsenica Antiqua', serif; font-size: 1.5rem; color: #1F8A84; margin: 0;">🛒 Tu Carrito</h3>
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #1F8A84; margin: 0;">🛒 Tu Carrito</h3>
             <button onclick="toggleCart()" style="background: none; border: none; font-size: 1.8rem; color: #333333; cursor: pointer;">&times;</button>
         </div>
         <div id="cartItems" style="margin-bottom: 20px;"></div>
@@ -305,7 +213,7 @@
 
     <div class="container hero-content" style="max-width: 1100px; margin: 0 auto; padding: 20px; position: relative; z-index: 1;">
 
-        <h1 style="font-family: 'Arsenica Antiqua', serif; font-size: 2.6rem; margin-bottom: 20px; text-shadow: 0 3px 15px rgba(0,0,0,0.5); line-height: 1.1;">
+        <h1 style="font-family: 'Playfair Display', serif; font-size: 2.6rem; margin-bottom: 20px; text-shadow: 0 3px 15px rgba(0,0,0,0.5); line-height: 1.1;">
             Quesos para <span style="color: #ffcc33;">cada momento</span>
         </h1>
 
@@ -322,24 +230,24 @@
             </a>
         </div>
 
-        <h2 style="font-family: 'Arsenica Antiqua', serif; font-size: 2.6rem; margin-bottom: 20px; text-shadow: 0 3px 15px rgba(0,0,0,0.5); line-height: 1.1;">
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.6rem; margin-bottom: 20px; text-shadow: 0 3px 15px rgba(0,0,0,0.5); line-height: 1.1;">
             ¿Por qué elegir <span style="color: #ffcc33;">Corazón Quesero?</span>
         </h2>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 50px; text-align: left;">
             <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2);">
                 <div style="font-size: 3rem; margin-bottom: 15px;">🧠</div>
-                <h3 style="font-family: 'Arsenica Antiqua', serif; font-size: 1.4rem; color: #ffcc33; margin-bottom: 10px;">Selección con criterio</h3>
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #ffcc33; margin-bottom: 10px;">Selección con criterio</h3>
                 <p style="color: rgba(255,255,255,0.9); font-size: 1rem; line-height: 1.6; margin: 0;">Elegimos cuidadosamente cada variedad priorizando calidad, frescura y consistencia.</p>
             </div>
             <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2);">
                 <div style="font-size: 3rem; margin-bottom: 15px;">🧀</div>
-                <h3 style="font-family: 'Arsenica Antiqua', serif; font-size: 1.4rem; color: #ffcc33; margin-bottom: 10px;">Especialización real</h3>
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #ffcc33; margin-bottom: 10px;">Especialización real</h3>
                 <p style="color: rgba(255,255,255,0.9); font-size: 1rem; line-height: 1.6; margin: 0;">Nos dedicamos al queso y te orientamos según tu gusto y la ocasión.</p>
             </div>
             <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2);">
                 <div style="font-size: 3rem; margin-bottom: 15px;">🤝</div>
-                <h3 style="font-family: 'Arsenica Antiqua', serif; font-size: 1.4rem; color: #ffcc33; margin-bottom: 10px;">Cercanía sin complicaciones</h3>
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #ffcc33; margin-bottom: 10px;">Cercanía sin complicaciones</h3>
                 <p style="color: rgba(255,255,255,0.9); font-size: 1rem; line-height: 1.6; margin: 0;">Aquí no necesitas ser experto. Te ayudamos a elegir con claridad y confianza.</p>
             </div>
         </div>
@@ -368,7 +276,7 @@
 <section class="products" id="productos" style="padding: 90px 0; background: #FFFFFF;">
     <div class="container" style="width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px;">
         <div class="section-title" style="text-align: center; margin-bottom: 60px;">
-            <h2 id="productsTitle" style="font-family: 'Arsenica Antiqua', serif; font-size: 2.8rem; color: #1F8A84; position: relative; display: inline-block; padding-bottom: 20px;">Todos los Productos</h2>
+            <h2 id="productsTitle" style="font-family: 'Playfair Display', serif; font-size: 2.8rem; color: #1F8A84; position: relative; display: inline-block; padding-bottom: 20px;">Todos los Productos</h2>
             <div style="width: 80px; height: 4px; background: #fd6f2f; margin: 15px auto 0;"></div>
         </div>
 
@@ -979,7 +887,7 @@
                 <img src="logo-corazon-quesero.png" alt="Corazón Quesero" style="max-width: 100%; max-height: 200%; object-fit: contain;">
             </div>
             <div class="about-text">
-                <h2 style="font-family: 'Arsenica Antiqua', serif; font-size: 2.6rem; color: #ffcc33; margin-bottom: 30px;">Nuestra Historia</h2>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 2.6rem; color: #ffcc33; margin-bottom: 30px;">Nuestra Historia</h2>
                 <p style="margin-bottom: 25px; font-size: 1.1rem; color: rgba(255,255,255,0.9); line-height: 1.8;"><strong style="color: #1F8A84;">Corazón Quesero</strong> nace de la <strong style="color: #FFFFFF;">pasión por el buen queso</strong> y del deseo de ofrecer una <strong style="color: #FFFFFF;">selección cuidada, confiable y accesible</strong> para quienes valoran la calidad.</p>
                 <p style="margin-bottom: 25px; font-size: 1.1rem; color: rgba(255,255,255,0.9); line-height: 1.8;">Contamos con <strong style="color: #FFFFFF;">3 años de experiencia en el mercado del queso,</strong> tiempo en el que hemos aprendido a reconocer <strong style="color: #FFFFFF;">proveedores responsables, productos consistentes</strong> y variedades que realmente marcan la diferencia.</p>
                 <p style="margin-bottom: 25px; font-size: 1.1rem; color: rgba(255,255,255,0.9); line-height: 1.8;">Nos especializamos en la <strong style="color: #FFFFFF;">selección y comercialización de quesos nacionales y europeos,</strong> trabajando con productores y distribuidores reconocidos que cumplen con <strong style="color: #FFFFFF;">estándares de frescura y manejo adecuado.</strong></p>
@@ -994,7 +902,7 @@
 <section class="contact" id="contacto" style="padding: 90px 0; background: #1F8A84; color: #FFFFFF; text-align: center;">
     <div class="container" style="width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px;">
         <div class="section-title" style="text-align: center; margin-bottom: 50px;">
-            <h2 style="font-family: 'Arsenica Antiqua', serif; font-size: 2.8rem; color: #FFFFFF; display: inline-block; padding-bottom: 15px;">Contáctanos</h2>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.8rem; color: #FFFFFF; display: inline-block; padding-bottom: 15px;">Contáctanos</h2>
             <div style="width: 80px; height: 4px; background: #ffcc33; margin: 15px auto 0;"></div>
             <p style="font-size: 1.15rem; max-width: 600px; margin: 20px auto 0; color: #FFFFFF;">¿Listo para disfrutar de nuestros quesos artesanales? Escríbenos y con gusto atenderemos tu pedido o consulta.</p>
         </div>
@@ -1027,8 +935,8 @@
         <div class="logo" style="display: flex; align-items: center; gap: 15px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 20px; border: 2px solid #1F8A84;">
             <img src="logo-corazon-blanco.png" alt="Corazón Quesero" style="height: 65px; width: auto;">
             <div class="logo-text" style="line-height: 1; padding-left: 15px; border-left: 3px solid #fd6f2f;">
-                <div style="font-family: 'Arsenica Antiqua', serif; font-size: 1.5rem; color: #FFFFFF; font-weight: 400;">Corazón</div>
-                <div style="font-family: 'Arsenica Antiqua', serif; font-size: 1.9rem; color: #1F8A84; font-weight: 700;">Quesero</div>
+                <div style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #FFFFFF; font-weight: 400;">Corazón</div>
+                <div style="font-family: 'Playfair Display', serif; font-size: 1.9rem; color: #1F8A84; font-weight: 700;">Quesero</div>
             </div>
         </div>
         <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem;">Quesos artesanales elaborados con amor en Costa Rica</p>
@@ -1066,7 +974,7 @@
 <div id="searchModal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9998; display: none; opacity: 0; transition: opacity 0.3s ease; align-items: center; justify-content: center;">
     <div style="background: #FFFFFF; padding: 40px; border-radius: 20px; max-width: 600px; width: 90%; box-shadow: 0 10px 40px rgba(0,0,0,0.3); position: relative;">
         <button onclick="toggleSearchModal()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 1.8rem; color: #666633; cursor: pointer;">&times;</button>
-        <h3 style="font-family: 'Arsenica Antiqua', serif; font-size: 1.8rem; color: #1F8A84; margin-bottom: 25px; text-align: center;">🔍 Buscar Productos</h3>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #1F8A84; margin-bottom: 25px; text-align: center;">🔍 Buscar Productos</h3>
         <div style="position: relative;">
             <input type="text" id="searchInput" placeholder="Escribe para buscar productos..." style="width: 100%; padding: 15px 20px 15px 50px; border: 3px solid #ffcc33; border-radius: 12px; font-size: 1.1rem; color: #333333; background: #FFFFFF; outline: none;" onkeyup="searchProducts()">
             <i class="fas fa-search" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: #fd6f2f; font-size: 1.2rem;"></i>
