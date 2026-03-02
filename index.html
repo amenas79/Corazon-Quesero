@@ -86,6 +86,8 @@
         }
 
         /* ── BOTONES FLOTANTES ── */
+		.filter-btn:hover { background: #ffcc33 !important; color: #333333 !important; }
+		.filter-btn.active { background: #ffcc33 !important; color: #333333 !important; }
         .floating-buttons { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9997; }
         .floating-btn { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
         .floating-btn:hover { transform: scale(1.1); }
@@ -101,7 +103,28 @@
         #searchModalResults::-webkit-scrollbar { width: 8px; }
         #searchModalResults::-webkit-scrollbar-track { background: #F6F1E8; border-radius: 10px; }
         #searchModalResults::-webkit-scrollbar-thumb { background: #fd6f2f; border-radius: 10px; }
-
+		
+		/* ── MODO PRÓXIMAMENTE ── */
+		.add-to-cart { display: none !important; }
+		.weight-selector { display: none !important; }
+		.product-price { display: none !important; }
+		#cartIcon { display: none !important; }
+		.proximamente-btn {
+			width: 100%;
+			padding: 10px;
+			background: #cccccc;
+			color: #666666;
+			border: none;
+			border-radius: 10px;
+			font-weight: 600;
+			font-size: 0.85rem;
+			cursor: not-allowed;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 6px;
+		}
+		
         /* ── PRODUCTOS MOBILE ── */
         @media (max-width: 768px) {
             /* 2 columnas en móvil */
@@ -328,15 +351,23 @@
             <div style="width: 80px; height: 4px; background: #fd6f2f; margin: 15px auto 0;"></div>
         </div>
 
-        <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap;">
-            <select id="productFilter" style="padding: 12px 20px; border: 2px solid #ffcc33; border-radius: 25px; font-size: 1rem; color: #333333; background: #FFFFFF; cursor: pointer; outline: none; min-width: 250px;" onchange="filterProductsBySelect(this.value)">
-                <option value="todos">👁️ Todos los Productos</option>
-                <option value="quesos-lacteos">🧀 Quesos y lácteos</option>
-                <option value="quesos-lacteos-cabra">🐐 Quesos de cabra</option>
-                <option value="embutidos-carnicos">🥓 Embutidos y cárnicos</option>
-                <option value="otros-productos">📦 Otros productos</option>
-            </select>
-        </div>
+        <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap;">
+			<button onclick="filterProductsBySelect('todos')" class="filter-btn" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border: 2px solid #ffcc33; border-radius: 25px; background: #FFFFFF; color: #333333; font-weight: 600; cursor: pointer; font-size: 0.9rem; transition: all 0.2s;">
+				<img src="iconos/Todo.svg" style="width: 22px; height: 22px;"> Todos
+			</button>
+			<button onclick="filterProductsBySelect('quesos-lacteos')" class="filter-btn" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border: 2px solid #ffcc33; border-radius: 25px; background: #FFFFFF; color: #333333; font-weight: 600; cursor: pointer; font-size: 0.9rem; transition: all 0.2s;">
+				<img src="iconos/Queso.svg" style="width: 22px; height: 22px;"> Derivados Lácteos
+			</button>
+			<button onclick="filterProductsBySelect('quesos-lacteos-cabra')" class="filter-btn" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border: 2px solid #ffcc33; border-radius: 25px; background: #FFFFFF; color: #333333; font-weight: 600; cursor: pointer; font-size: 0.9rem; transition: all 0.2s;">
+				<img src="iconos/Cabra.svg" style="width: 22px; height: 22px;"> Derivados Lácteos de Cabra
+			</button>
+			<button onclick="filterProductsBySelect('embutidos-carnicos')" class="filter-btn" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border: 2px solid #ffcc33; border-radius: 25px; background: #FFFFFF; color: #333333; font-weight: 600; cursor: pointer; font-size: 0.9rem; transition: all 0.2s;">
+				<img src="iconos/Embutido.svg" style="width: 22px; height: 22px;"> Embutidos y cárnicos
+			</button>
+			<button onclick="filterProductsBySelect('otros-productos')" class="filter-btn" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border: 2px solid #ffcc33; border-radius: 25px; background: #FFFFFF; color: #333333; font-weight: 600; cursor: pointer; font-size: 0.9rem; transition: all 0.2s;">
+				<img src="iconos/Tortilla.svg" style="width: 22px; height: 22px;"> Otros productos
+			</button>
+		</div>
 
         <div class="products-grid" id="productsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(270px, calc(50% - 10px)), 1fr)); gap: 15px; margin-top: 40px;">
 
@@ -348,7 +379,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso crema natural artesanal</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="2750" data-weight="150g" selected>150g - ₡2,750</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡2,750</div>
-                    <button class="add-to-cart" data-product="Cafano Dota Cream Natural 150g" data-price="2750" data-weight="150g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Cafano Dota Cream Natural 150g" data-price="2750" data-weight="150g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -359,7 +391,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso crema con romero fresco</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="3000" data-weight="150g" selected>150g - ₡3,000</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡3,000</div>
-                    <button class="add-to-cart" data-product="Cafano Dota Cream Romero 150g" data-price="3000" data-weight="150g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Cafano Dota Cream Romero 150g" data-price="3000" data-weight="150g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -370,7 +403,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Denominación de Origen</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="1200" data-weight="250g">250g - ₡1,200</option><option value="2300" data-weight="500g">500g - ₡2,300</option><option value="4600" data-weight="1kg" selected>1kg - ₡4,600</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡4,600</div>
-                    <button class="add-to-cart" data-product="Queso Turrialba" data-price="4600" data-weight="1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso Turrialba" data-price="4600" data-weight="1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -381,7 +415,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Mezcla artesanal de quesos</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="1400" data-weight="250g">250g - ₡1,400</option><option value="2800" data-weight="500g">500g - ₡2,800</option><option value="5600" data-weight="1kg" selected>1kg - ₡5,600</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡5,600</div>
-                    <button class="add-to-cart" data-product="Mezcla de Quesos Rallado" data-price="5600" data-weight="1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Mezcla de Quesos Rallado" data-price="5600" data-weight="1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -392,7 +427,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Ideal para pizzas y ensaladas</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="1500" data-weight="250g">250g - ₡1,500</option><option value="3000" data-weight="500g">500g - ₡3,000</option><option value="6000" data-weight="1kg" selected>1kg - ₡6,000</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡6,000</div>
-                    <button class="add-to-cart" data-product="Queso Mozzarella" data-price="6000" data-weight="1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso Mozzarella" data-price="6000" data-weight="1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -404,7 +440,8 @@
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="6000" data-weight="Aprox. 1kg" selected>Aprox. 1kg - ₡6,000*</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡6,000</div>
                     <p style="color: #fd6f2f; font-size: 0.8rem; margin-top: 5px;">*El peso puede variar ligeramente</p>
-                    <button class="add-to-cart" data-product="Queso Maduro" data-price="6000" data-weight="Aprox. 1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso Maduro" data-price="6000" data-weight="Aprox. 1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -416,7 +453,8 @@
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="5000" data-weight="Aprox. 1kg" selected>Aprox. 1kg - ₡5,000*</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡5,000</div>
                     <p style="color: #fd6f2f; font-size: 0.8rem; margin-top: 5px;">*El peso puede variar ligeramente</p>
-                    <button class="add-to-cart" data-product="Mantequilla Artesanal" data-price="5000" data-weight="Aprox. 1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Mantequilla Artesanal" data-price="5000" data-weight="Aprox. 1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -427,7 +465,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso parmesano artesanal</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="1400" data-weight="250g">250g - ₡1,400</option><option value="2800" data-weight="500g">500g - ₡2,800</option><option value="5600" data-weight="1kg" selected>1kg - ₡5,600</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡5,600</div>
-                    <button class="add-to-cart" data-product="Queso Parmesano" data-price="5600" data-weight="1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso Parmesano" data-price="5600" data-weight="1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -438,7 +477,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso maduro con chile artesanal</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="3500" data-weight="Unidad" selected>Unidad - ₡3,500</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡3,500</div>
-                    <button class="add-to-cart" data-product="Queso Maduro con Chile" data-price="3500" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso Maduro con Chile" data-price="3500" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -449,7 +489,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Sabor italiano artesanal</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="3500" data-weight="Unidad" selected>Unidad - ₡3,500</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡3,500</div>
-                    <button class="add-to-cart" data-product="Queso Maduro con Especias Italianas" data-price="3500" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso Maduro con Especias Italianas" data-price="3500" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -460,7 +501,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">El clásico sabor original</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="3500" data-weight="Unidad" selected>Unidad - ₡3,500</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡3,500</div>
-                    <button class="add-to-cart" data-product="Queso Maduro Original" data-price="3500" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso Maduro Original" data-price="3500" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -472,7 +514,8 @@
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="5600" data-weight="Aprox. 1kg" selected>Aprox. 1kg - ₡5,600*</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡5,600</div>
                     <p style="color: #fd6f2f; font-size: 0.8rem; margin-top: 5px;">*El peso puede variar ligeramente</p>
-                    <button class="add-to-cart" data-product="Queso Ahumado" data-price="5600" data-weight="Aprox. 1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso Ahumado" data-price="5600" data-weight="Aprox. 1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -483,7 +526,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Listo para usar en tus recetas</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="1400" data-weight="250g">250g - ₡1,400</option><option value="2800" data-weight="500g">500g - ₡2,800</option><option value="5600" data-weight="1kg" selected>1kg - ₡5,600</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡5,600</div>
-                    <button class="add-to-cart" data-product="Queso Ahumado Rallado" data-price="5600" data-weight="1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso Ahumado Rallado" data-price="5600" data-weight="1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -494,7 +538,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Textura firme y sabor equilibrado</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="1200" data-weight="250g">250g - ₡1,200</option><option value="2300" data-weight="500g">500g - ₡2,300</option><option value="4600" data-weight="1kg" selected>1kg - ₡4,600</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡4,600</div>
-                    <button class="add-to-cart" data-product="Queso Semiduro" data-price="4600" data-weight="1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso Semiduro" data-price="4600" data-weight="1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -505,7 +550,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Textura única con poros naturales</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="1300" data-weight="250g">250g - ₡1,300</option><option value="2500" data-weight="500g">500g - ₡2,500</option><option value="5000" data-weight="1kg" selected>1kg - ₡5,000</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡5,000</div>
-                    <button class="add-to-cart" data-product="Queso Semiduro Poroso" data-price="5000" data-weight="1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso Semiduro Poroso" data-price="5000" data-weight="1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -516,7 +562,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Listo para rallar en tus platos</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="1200" data-weight="250g">250g - ₡1,200</option><option value="2300" data-weight="500g">500g - ₡2,300</option><option value="4600" data-weight="1kg" selected>1kg - ₡4,600</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡4,600</div>
-                    <button class="add-to-cart" data-product="Queso Semiduro Rallado" data-price="4600" data-weight="1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso Semiduro Rallado" data-price="4600" data-weight="1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -528,7 +575,8 @@
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="7500" data-weight="Por cuña" selected>Por cuña - ₡7,500*</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡7,500</div>
                     <p style="color: #fd6f2f; font-size: 0.8rem; margin-top: 5px;">*Precio base por cuña</p>
-                    <button class="add-to-cart" data-product="Queso Ricota" data-price="7500" data-weight="Por cuña" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso Ricota" data-price="7500" data-weight="Por cuña" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -540,7 +588,8 @@
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="13500" data-weight="Aprox. 1kg" selected>Aprox. 1kg - ₡13,500*</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡13,500</div>
                     <p style="color: #fd6f2f; font-size: 0.8rem; margin-top: 5px;">*El peso puede variar ligeramente</p>
-                    <button class="add-to-cart" data-product="Queso Provolone" data-price="13500" data-weight="Aprox. 1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso Provolone" data-price="13500" data-weight="Aprox. 1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -551,7 +600,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Natilla fresca artesanal</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="1000" data-weight="250g" selected>250g - ₡1,000</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡1,000</div>
-                    <button class="add-to-cart" data-product="Natilla 250g" data-price="1000" data-weight="250g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Natilla 250g" data-price="1000" data-weight="250g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -562,7 +612,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Natilla fresca artesanal</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="1700" data-weight="500g" selected>500g - ₡1,700</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡1,700</div>
-                    <button class="add-to-cart" data-product="Natilla 500g" data-price="1700" data-weight="500g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Natilla 500g" data-price="1700" data-weight="500g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -573,7 +624,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Cuajada fresca tradicional</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="1700" data-weight="Unidad" selected>Unidad - ₡1,700</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡1,700</div>
-                    <button class="add-to-cart" data-product="Cuajada" data-price="1700" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Cuajada" data-price="1700" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -584,7 +636,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Leche agria artesanal</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="1300" data-weight="1L" selected>1L - ₡1,300</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡1,300</div>
-                    <button class="add-to-cart" data-product="Leche Agria" data-price="1300" data-weight="1L" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Leche Agria" data-price="1300" data-weight="1L" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -595,7 +648,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso con palmito artesanal</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="3000" data-weight="Unidad" selected>Unidad - ₡3,000</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡3,000</div>
-                    <button class="add-to-cart" data-product="Queso Palmito" data-price="3000" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso Palmito" data-price="3000" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -606,7 +660,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso crema suave y cremoso</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="1400" data-weight="250g" selected>250g - ₡1,400</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡1,400</div>
-                    <button class="add-to-cart" data-product="Queso Crema 250g" data-price="1400" data-weight="250g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso Crema 250g" data-price="1400" data-weight="250g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -617,7 +672,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Mozzarella fresca del día</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="4200" data-weight="500g" selected>500g - ₡4,200</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡4,200</div>
-                    <button class="add-to-cart" data-product="Queso Mozzarella Fresca" data-price="4200" data-weight="500g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso Mozzarella Fresca" data-price="4200" data-weight="500g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -628,7 +684,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Provola ahumada artesanal</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="1500" data-weight="Unidad" selected>Unidad - ₡1,500</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡1,500</div>
-                    <button class="add-to-cart" data-product="Provola Ahumada" data-price="1500" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Provola Ahumada" data-price="1500" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -639,7 +696,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Suave y cremoso para untar</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="1300" data-weight="Unidad" selected>Unidad - ₡1,300</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡1,300</div>
-                    <button class="add-to-cart" data-product="Queso Untable La Vaca que Rie" data-price="1300" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso Untable La Vaca que Rie" data-price="1300" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -650,7 +708,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso de oveja curado español</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="5300" data-weight="Unidad" selected>Unidad - ₡5,300</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡5,300</div>
-                    <button class="add-to-cart" data-product="Queso de Oveja Curado Palancares" data-price="5300" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso de Oveja Curado Palancares" data-price="5300" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -661,7 +720,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Manchego semicurado español</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="5950" data-weight="Unidad" selected>Unidad - ₡5,950</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡5,950</div>
-                    <button class="add-to-cart" data-product="Queso Manchego Semicurado Roblevega" data-price="5950" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso Manchego Semicurado Roblevega" data-price="5950" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -672,7 +732,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Murcia curado en vino tinto</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="5000" data-weight="Unidad" selected>Unidad - ₡5,000</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡5,000</div>
-                    <button class="add-to-cart" data-product="Queso Murcia al Vino Palancares" data-price="5000" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso Murcia al Vino Palancares" data-price="5000" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -683,7 +744,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Mezcla de vaca y oveja</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="3600" data-weight="Unidad" selected>Unidad - ₡3,600</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡3,600</div>
-                    <button class="add-to-cart" data-product="Queso SemiCurado Vaca y Oveja Palancares" data-price="3600" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Queso SemiCurado Vaca y Oveja Palancares" data-price="3600" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -694,7 +756,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Tortillas rellenas de queso</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="2200" data-weight="Paquete 5" selected>Paquete 5 - ₡2,200</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡2,200</div>
-                    <button class="add-to-cart" data-product="Tortillas con Queso Paquete 5" data-price="2200" data-weight="Paquete 5" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Tortillas con Queso Paquete 5" data-price="2200" data-weight="Paquete 5" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -706,7 +769,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Kefir natural de cabra artesanal</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="4300" data-weight="1L" selected>1L - ₡4,300</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡4,300</div>
-                    <button class="add-to-cart" data-product="Cafano Kefir de Cabra Natural 1L" data-price="4300" data-weight="1L" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Cafano Kefir de Cabra Natural 1L" data-price="4300" data-weight="1L" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -717,7 +781,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Kefir con arándanos y vainilla</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="4550" data-weight="1L" selected>1L - ₡4,550</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡4,550</div>
-                    <button class="add-to-cart" data-product="Cafano Kefir de Cabra Arándanos y Vainilla 1L" data-price="4550" data-weight="1L" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Cafano Kefir de Cabra Arándanos y Vainilla 1L" data-price="4550" data-weight="1L" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -728,7 +793,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Kefir con frutos rojos</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="4550" data-weight="1L" selected>1L - ₡4,550</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡4,550</div>
-                    <button class="add-to-cart" data-product="Cafano Kefir de Cabra Frutos Rojos 1L" data-price="4550" data-weight="1L" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Cafano Kefir de Cabra Frutos Rojos 1L" data-price="4550" data-weight="1L" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -739,7 +805,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Kefir con frutos rojos</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="3850" data-weight="1L" selected>1L - ₡3,850</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡3,850</div>
-                    <button class="add-to-cart" data-product="Cafano Kefir Frutos Rojos 1L" data-price="3850" data-weight="1L" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Cafano Kefir Frutos Rojos 1L" data-price="3850" data-weight="1L" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -750,7 +817,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Kefir natural artesanal</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="3000" data-weight="1L" selected>1L - ₡3,000</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡3,000</div>
-                    <button class="add-to-cart" data-product="Cafano Kefir Natural 1L" data-price="3000" data-weight="1L" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Cafano Kefir Natural 1L" data-price="3000" data-weight="1L" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -761,7 +829,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Kefir Nora artesanal</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="3850" data-weight="1L" selected>1L - ₡3,850</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡3,850</div>
-                    <button class="add-to-cart" data-product="Cafano Kefir Nora 1L" data-price="3850" data-weight="1L" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Cafano Kefir Nora 1L" data-price="3850" data-weight="1L" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -772,7 +841,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Leche fresca de cabra</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="2500" data-weight="1L" selected>1L - ₡2,500</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡2,500</div>
-                    <button class="add-to-cart" data-product="Cafano Leche de Cabra 1L" data-price="2500" data-weight="1L" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Cafano Leche de Cabra 1L" data-price="2500" data-weight="1L" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -783,7 +853,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso crema de cabra con ajo y pimienta</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="3850" data-weight="150g" selected>150g - ₡3,850</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡3,850</div>
-                    <button class="add-to-cart" data-product="Cafano Queso Cabra Dota Cream Ajo Pimienta 150g" data-price="3850" data-weight="150g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Cafano Queso Cabra Dota Cream Ajo Pimienta 150g" data-price="3850" data-weight="150g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -794,7 +865,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso crema de cabra con albahaca</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="3850" data-weight="150g" selected>150g - ₡3,850</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡3,850</div>
-                    <button class="add-to-cart" data-product="Cafano Queso Cabra Dota Cream Albahaca 150g" data-price="3850" data-weight="150g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Cafano Queso Cabra Dota Cream Albahaca 150g" data-price="3850" data-weight="150g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -805,7 +877,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso crema de cabra con higos y almendras</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="3850" data-weight="150g" selected>150g - ₡3,850</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡3,850</div>
-                    <button class="add-to-cart" data-product="Cafano Queso Cabra Dota Cream Higos y Almendras 150g" data-price="3850" data-weight="150g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Cafano Queso Cabra Dota Cream Higos y Almendras 150g" data-price="3850" data-weight="150g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -816,7 +889,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso crema de cabra con miel y flores</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="3850" data-weight="150g" selected>150g - ₡3,850</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡3,850</div>
-                    <button class="add-to-cart" data-product="Cafano Queso Cabra Dota Cream Miel y Flores 150g" data-price="3850" data-weight="150g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Cafano Queso Cabra Dota Cream Miel y Flores 150g" data-price="3850" data-weight="150g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -827,7 +901,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso crema de cabra natural</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="3700" data-weight="150g" selected>150g - ₡3,700</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡3,700</div>
-                    <button class="add-to-cart" data-product="Cafano Queso Cabra Dota Cream Natural 150g" data-price="3700" data-weight="150g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Cafano Queso Cabra Dota Cream Natural 150g" data-price="3700" data-weight="150g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -838,7 +913,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Rulos de cabra con arándanos</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="2200" data-weight="100g" selected>100g - ₡2,200</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡2,200</div>
-                    <button class="add-to-cart" data-product="Rulos Queso de Cabra con Arándanos 100g" data-price="2200" data-weight="100g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Rulos Queso de Cabra con Arándanos 100g" data-price="2200" data-weight="100g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -849,7 +925,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Rulos de cabra con papaya</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="2200" data-weight="100g" selected>100g - ₡2,200</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡2,200</div>
-                    <button class="add-to-cart" data-product="Rulos Queso de Cabra con Papaya 100g" data-price="2200" data-weight="100g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Rulos Queso de Cabra con Papaya 100g" data-price="2200" data-weight="100g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -860,7 +937,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Rulos de cabra con trufa</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="2550" data-weight="100g" selected>100g - ₡2,550</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡2,550</div>
-                    <button class="add-to-cart" data-product="Rulos Queso de Cabra con Trufa 100g" data-price="2550" data-weight="100g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Rulos Queso de Cabra con Trufa 100g" data-price="2550" data-weight="100g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -871,7 +949,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Rulos de cabra naturales</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="1850" data-weight="100g" selected>100g - ₡1,850</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡1,850</div>
-                    <button class="add-to-cart" data-product="Rulos Queso de Cabra Natural 100g" data-price="1850" data-weight="100g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Rulos Queso de Cabra Natural 100g" data-price="1850" data-weight="100g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -883,7 +962,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Manteca artesanal para cocinar</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="2200" data-weight="Unidad" selected>Unidad - ₡2,200</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡2,200</div>
-                    <button class="add-to-cart" data-product="Manteca de Cerdo Tucurrique" data-price="2200" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Manteca de Cerdo Tucurrique" data-price="2200" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -895,7 +975,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Café de Tarazú, Costa Rica</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="3500" data-weight="Unidad" selected>Unidad - ₡3,500</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡3,500</div>
-                    <button class="add-to-cart" data-product="Café Cerro la Cruz San Marcos de Tarazu" data-price="3500" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Café Cerro la Cruz San Marcos de Tarazu" data-price="3500" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -906,7 +987,8 @@
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Tamal tradicional costarricense</p>
                     <div style="margin-bottom: 12px;"><select class="weight-selector" style="width: 100%; padding: 8px; border: 2px solid #ffcc33; border-radius: 8px;" onchange="updatePrice(this)"><option value="1600" data-weight="Unidad" selected>Unidad - ₡1,600</option></select></div>
                     <div class="product-price" style="font-weight: 700; font-size: 1.4rem; color: #fd6f2f; margin: 12px 0;">₡1,600</div>
-                    <button class="add-to-cart" data-product="Tamal" data-price="1600" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <div class="proximamente-btn">🕐 Próximamente</div>
+<button class="add-to-cart" data-product="Tamal" data-price="1600" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-cart-plus"></i> Añadir</button>
                 </div>
             </div>
 
@@ -1382,11 +1464,14 @@ window.filterProducts = function(category, categoryName) {
 window.filterProductsBySelect = function(category) {
     const categoryNames = {
         'todos': 'Todos los Productos',
-        'quesos-lacteos': 'Quesos y lácteos',
-        'quesos-lacteos-cabra': 'Quesos de cabra',
+        'quesos-lacteos': 'Derivados Lácteos',
+        'quesos-lacteos-cabra': 'Derivados Lácteos de Cabra',
         'embutidos-carnicos': 'Embutidos y cárnicos',
         'otros-productos': 'Otros productos'
     };
+    // Resaltar botón activo
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.closest('.filter-btn').classList.add('active');
     filterProducts(category, categoryNames[category] || 'Productos');
 }
 
