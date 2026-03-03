@@ -172,18 +172,19 @@
         }
     </style>
 <script>
-function imgFallback(el, color, icon, iconColor) {
+function imgFallback(el, color, svgSrc) {
     el.style.display = 'none';
     var d = el.parentElement;
     d.style.display = 'flex';
     d.style.alignItems = 'center';
     d.style.justifyContent = 'center';
     d.style.background = color;
-    var i = document.createElement('i');
-    i.className = 'fas ' + icon;
-    i.style.color = iconColor;
-    i.style.fontSize = '3.5rem';
-    d.appendChild(i);
+    var img = document.createElement('img');
+    img.src = svgSrc;
+    img.style.width = '80px';
+    img.style.height = '80px';
+    img.style.opacity = '0.85';
+    d.appendChild(img);
 }
 </script>
 </head>
@@ -388,7 +389,7 @@ function imgFallback(el, color, icon, iconColor) {
 
             <!-- PRODUCTOS: Quesos y lácteos -->
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/cafano-dota-cream-natural-150g.jpg" alt="Cafano Dota Cream Natural 150g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/cafano-dota-cream-natural-150g.jpg" alt="Cafano Dota Cream Natural 150g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Cafano Dota Cream Natural 150g</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso crema natural artesanal</p>
@@ -400,7 +401,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/cafano-dota-cream-romero-150g.jpg" alt="Cafano Dota Cream Romero 150g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/cafano-dota-cream-romero-150g.jpg" alt="Cafano Dota Cream Romero 150g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Cafano Dota Cream Romero 150g</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso crema con romero fresco</p>
@@ -412,7 +413,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/queso-turrialba.jpg" alt="Queso Turrialba" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/queso-turrialba.jpg" alt="Queso Turrialba" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso Turrialba</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Denominación de Origen</p>
@@ -424,7 +425,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/mezcla-de-quesos-rallado.jpg" alt="Mezcla de Quesos Rallado" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/mezcla-de-quesos-rallado.jpg" alt="Mezcla de Quesos Rallado" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Mezcla de Quesos Rallado</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Mezcla artesanal de quesos</p>
@@ -436,7 +437,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/queso-mozzarella.jpg" alt="Queso Mozzarella" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','fa-cheese','#ffcc33')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/queso-mozzarella.jpg" alt="Queso Mozzarella" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso Mozzarella</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Ideal para pizzas y ensaladas</p>
@@ -448,7 +449,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/queso-maduro.jpg" alt="Queso Maduro" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/queso-maduro.jpg" alt="Queso Maduro" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso Maduro</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Se vende por paquete, peso puede variar</p>
@@ -461,7 +462,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #ffcc33;"><img src="fotos/mantequilla-artesanal.jpg" alt="Mantequilla Artesanal" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#ffcc33','fa-cheese','#333333')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #ffcc33;"><img src="fotos/mantequilla-artesanal.jpg" alt="Mantequilla Artesanal" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#ffcc33','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Mantequilla Artesanal</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Se vende por paquete, peso puede variar</p>
@@ -474,7 +475,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/queso-parmesano.jpg" alt="Queso Parmesano" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','fa-cheese','#ffcc33')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/queso-parmesano.jpg" alt="Queso Parmesano" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso Parmesano</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso parmesano artesanal</p>
@@ -486,7 +487,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/queso-maduro-con-chile.jpg" alt="Queso Maduro con Chile" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/queso-maduro-con-chile.jpg" alt="Queso Maduro con Chile" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso Maduro con Chile</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso maduro con chile artesanal</p>
@@ -498,7 +499,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/queso-maduro-con-especias-italianas.jpg" alt="Queso Maduro con Especias Italianas" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/queso-maduro-con-especias-italianas.jpg" alt="Queso Maduro con Especias Italianas" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso Maduro con Especias Italianas</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Sabor italiano artesanal</p>
@@ -510,7 +511,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/queso-maduro-original.jpg" alt="Queso Maduro Original" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/queso-maduro-original.jpg" alt="Queso Maduro Original" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso Maduro Original</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">El clásico sabor original</p>
@@ -522,7 +523,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/queso-ahumado.jpg" alt="Queso Ahumado" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','fa-cheese','#ffcc33')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/queso-ahumado.jpg" alt="Queso Ahumado" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso Ahumado</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Se vende por paquete, peso puede variar</p>
@@ -535,7 +536,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/queso-ahumado-rallado.jpg" alt="Queso Ahumado Rallado" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/queso-ahumado-rallado.jpg" alt="Queso Ahumado Rallado" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso Ahumado Rallado</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Listo para usar en tus recetas</p>
@@ -547,7 +548,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/queso-semiduro.jpg" alt="Queso Semiduro" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/queso-semiduro.jpg" alt="Queso Semiduro" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso Semiduro</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Textura firme y sabor equilibrado</p>
@@ -559,7 +560,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/queso-semiduro-poroso.jpg" alt="Queso Semiduro Poroso" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/queso-semiduro-poroso.jpg" alt="Queso Semiduro Poroso" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso Semiduro Poroso</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Textura única con poros naturales</p>
@@ -571,7 +572,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/queso-semiduro-rallado.jpg" alt="Queso Semiduro Rallado" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','fa-cheese','#ffcc33')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/queso-semiduro-rallado.jpg" alt="Queso Semiduro Rallado" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso Semiduro Rallado</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Listo para rallar en tus platos</p>
@@ -583,7 +584,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/queso-ricota.jpg" alt="Queso Ricota" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/queso-ricota.jpg" alt="Queso Ricota" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso Ricota</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Se vende por cuña, se cobra según peso</p>
@@ -596,7 +597,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/queso-provolone.jpg" alt="Queso Provolone" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/queso-provolone.jpg" alt="Queso Provolone" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso Provolone</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Se vende por paquete, peso puede variar</p>
@@ -609,7 +610,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/natilla-250g.jpg" alt="Natilla 250g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/natilla-250g.jpg" alt="Natilla 250g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Natilla 250g</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Natilla fresca artesanal</p>
@@ -621,7 +622,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/natilla-500g.jpg" alt="Natilla 500g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','fa-cheese','#ffcc33')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/natilla-500g.jpg" alt="Natilla 500g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Natilla 500g</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Natilla fresca artesanal</p>
@@ -633,7 +634,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/cuajada.jpg" alt="Cuajada" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/cuajada.jpg" alt="Cuajada" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Cuajada</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Cuajada fresca tradicional</p>
@@ -645,7 +646,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #ffcc33;"><img src="fotos/leche-agria.jpg" alt="Leche Agria" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#ffcc33','fa-cheese','#333333')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #ffcc33;"><img src="fotos/leche-agria.jpg" alt="Leche Agria" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#ffcc33','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Leche Agria</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Leche agria artesanal</p>
@@ -657,7 +658,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/queso-palmito.jpg" alt="Queso Palmito" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/queso-palmito.jpg" alt="Queso Palmito" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso Palmito</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso con palmito artesanal</p>
@@ -669,7 +670,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/queso-crema-250g.jpg" alt="Queso Crema 250g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','fa-cheese','#ffcc33')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/queso-crema-250g.jpg" alt="Queso Crema 250g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso Crema 250g</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso crema suave y cremoso</p>
@@ -681,7 +682,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/queso-mozzarella-fresca.jpg" alt="Queso Mozzarella Fresca" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/queso-mozzarella-fresca.jpg" alt="Queso Mozzarella Fresca" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso Mozzarella Fresca</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Mozzarella fresca del día</p>
@@ -693,7 +694,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/provola-ahumada.jpg" alt="Provola Ahumada" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/provola-ahumada.jpg" alt="Provola Ahumada" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Provola Ahumada</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Provola ahumada artesanal</p>
@@ -705,7 +706,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/queso-untable-la-vaca-que-rie.jpg" alt="Queso Untable La Vaca que Ríe" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/queso-untable-la-vaca-que-rie.jpg" alt="Queso Untable La Vaca que Ríe" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso Untable La Vaca que Ríe</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Suave y cremoso para untar</p>
@@ -717,7 +718,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/queso-de-oveja-curado-palancares.jpg" alt="Queso de Oveja Curado Palancares" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','fa-cheese','#ffcc33')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/queso-de-oveja-curado-palancares.jpg" alt="Queso de Oveja Curado Palancares" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso de Oveja Curado Palancares</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso de oveja curado español</p>
@@ -729,7 +730,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/queso-manchego-semicurado-roblevega.jpg" alt="Queso Manchego Semicurado Roblevega" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/queso-manchego-semicurado-roblevega.jpg" alt="Queso Manchego Semicurado Roblevega" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso Manchego Semicurado Roblevega</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Manchego semicurado español</p>
@@ -741,7 +742,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/queso-murcia-al-vino-palancares.jpg" alt="Queso Murcia al Vino Palancares" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/queso-murcia-al-vino-palancares.jpg" alt="Queso Murcia al Vino Palancares" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso Murcia al Vino Palancares</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Murcia curado en vino tinto</p>
@@ -753,7 +754,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/queso-semicurado-vaca-y-oveja-palancares.jpg" alt="Queso SemiCurado Vaca y Oveja Palancares" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/queso-semicurado-vaca-y-oveja-palancares.jpg" alt="Queso SemiCurado Vaca y Oveja Palancares" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Queso SemiCurado Vaca y Oveja Palancares</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Mezcla de vaca y oveja</p>
@@ -765,7 +766,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/tortillas-con-queso-paquete-5.jpg" alt="Tortillas con Queso Paquete 5" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','fa-cheese','#ffcc33')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/tortillas-con-queso-paquete-5.jpg" alt="Tortillas con Queso Paquete 5" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','iconos/Queso.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Tortillas con Queso Paquete 5</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Tortillas rellenas de queso</p>
@@ -778,7 +779,7 @@ function imgFallback(el, color, icon, iconColor) {
 
             <!-- PRODUCTOS: Quesos de cabra -->
             <div class="product-card" data-category="quesos-lacteos-cabra" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/cafano-kefir-de-cabra-natural-1l.jpg" alt="Cafano Kefir de Cabra Natural 1L" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/cafano-kefir-de-cabra-natural-1l.jpg" alt="Cafano Kefir de Cabra Natural 1L" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','iconos/Cabra.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Cafano Kefir de Cabra Natural 1L</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Kefir natural de cabra artesanal</p>
@@ -790,7 +791,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos-cabra" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/cafano-kefir-de-cabra-arandanos-y-vainilla-1l.jpg" alt="Cafano Kefir de Cabra Arándanos y Vainilla 1L" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/cafano-kefir-de-cabra-arandanos-y-vainilla-1l.jpg" alt="Cafano Kefir de Cabra Arándanos y Vainilla 1L" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','iconos/Cabra.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Cafano Kefir de Cabra Arándanos y Vainilla 1L</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Kefir con arándanos y vainilla</p>
@@ -802,7 +803,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos-cabra" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/cafano-kefir-de-cabra-frutos-rojos-1l.jpg" alt="Cafano Kefir de Cabra Frutos Rojos 1L" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/cafano-kefir-de-cabra-frutos-rojos-1l.jpg" alt="Cafano Kefir de Cabra Frutos Rojos 1L" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','iconos/Cabra.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Cafano Kefir de Cabra Frutos Rojos 1L</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Kefir con frutos rojos</p>
@@ -814,7 +815,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos-cabra" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/cafano-kefir-frutos-rojos-1l.jpg" alt="Cafano Kefir Frutos Rojos 1L" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','fa-cheese','#ffcc33')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/cafano-kefir-frutos-rojos-1l.jpg" alt="Cafano Kefir Frutos Rojos 1L" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','iconos/Cabra.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Cafano Kefir Frutos Rojos 1L</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Kefir con frutos rojos</p>
@@ -826,7 +827,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos-cabra" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/cafano-kefir-natural-1l.jpg" alt="Cafano Kefir Natural 1L" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/cafano-kefir-natural-1l.jpg" alt="Cafano Kefir Natural 1L" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','iconos/Cabra.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Cafano Kefir Natural 1L</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Kefir natural artesanal</p>
@@ -838,7 +839,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos-cabra" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/cafano-kefir-nora-1l.jpg" alt="Cafano Kefir Nora 1L" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/cafano-kefir-nora-1l.jpg" alt="Cafano Kefir Nora 1L" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','iconos/Cabra.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Cafano Kefir Nora 1L</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Kefir Nora artesanal</p>
@@ -850,7 +851,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos-cabra" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/cafano-leche-de-cabra-1l.jpg" alt="Cafano Leche de Cabra 1L" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/cafano-leche-de-cabra-1l.jpg" alt="Cafano Leche de Cabra 1L" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','iconos/Cabra.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Cafano Leche de Cabra 1L</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Leche fresca de cabra</p>
@@ -862,7 +863,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos-cabra" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/cafano-queso-cabra-dota-cream-ajo-pimienta-150g.jpg" alt="Cafano Queso Cabra Dota Cream Ajo Pimienta 150g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','fa-cheese','#ffcc33')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/cafano-queso-cabra-dota-cream-ajo-pimienta-150g.jpg" alt="Cafano Queso Cabra Dota Cream Ajo Pimienta 150g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','iconos/Cabra.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Cafano Queso Cabra Dota Cream Ajo Pimienta 150g</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso crema de cabra con ajo y pimienta</p>
@@ -874,7 +875,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos-cabra" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/cafano-queso-cabra-dota-cream-albahaca-150g.jpg" alt="Cafano Queso Cabra Dota Cream Albahaca 150g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/cafano-queso-cabra-dota-cream-albahaca-150g.jpg" alt="Cafano Queso Cabra Dota Cream Albahaca 150g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','iconos/Cabra.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Cafano Queso Cabra Dota Cream Albahaca 150g</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso crema de cabra con albahaca</p>
@@ -886,7 +887,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos-cabra" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/cafano-queso-cabra-dota-cream-higos-y-almendras-150g.jpg" alt="Cafano Queso Cabra Dota Cream Higos y Almendras 150g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/cafano-queso-cabra-dota-cream-higos-y-almendras-150g.jpg" alt="Cafano Queso Cabra Dota Cream Higos y Almendras 150g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','iconos/Cabra.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Cafano Queso Cabra Dota Cream Higos y Almendras 150g</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso crema de cabra con higos y almendras</p>
@@ -898,7 +899,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos-cabra" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/cafano-queso-cabra-dota-cream-miel-y-flores-150g.jpg" alt="Cafano Queso Cabra Dota Cream Miel y Flores 150g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/cafano-queso-cabra-dota-cream-miel-y-flores-150g.jpg" alt="Cafano Queso Cabra Dota Cream Miel y Flores 150g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','iconos/Cabra.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Cafano Queso Cabra Dota Cream Miel y Flores 150g</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso crema de cabra con miel y flores</p>
@@ -910,7 +911,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos-cabra" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/cafano-queso-cabra-dota-cream-natural-150g.jpg" alt="Cafano Queso Cabra Dota Cream Natural 150g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','fa-cheese','#ffcc33')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/cafano-queso-cabra-dota-cream-natural-150g.jpg" alt="Cafano Queso Cabra Dota Cream Natural 150g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','iconos/Cabra.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Cafano Queso Cabra Dota Cream Natural 150g</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Queso crema de cabra natural</p>
@@ -922,7 +923,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos-cabra" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/rulos-queso-de-cabra-con-arandanos-100g.jpg" alt="Rulos Queso de Cabra con Arándanos 100g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/rulos-queso-de-cabra-con-arandanos-100g.jpg" alt="Rulos Queso de Cabra con Arándanos 100g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','iconos/Cabra.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Rulos Queso de Cabra con Arándanos 100g</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Rulos de cabra con arándanos</p>
@@ -934,7 +935,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos-cabra" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/rulos-queso-de-cabra-con-papaya-100g.jpg" alt="Rulos Queso de Cabra con Papaya 100g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/rulos-queso-de-cabra-con-papaya-100g.jpg" alt="Rulos Queso de Cabra con Papaya 100g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','iconos/Cabra.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Rulos Queso de Cabra con Papaya 100g</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Rulos de cabra con papaya</p>
@@ -946,7 +947,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos-cabra" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/rulos-queso-de-cabra-con-trufa-100g.jpg" alt="Rulos Queso de Cabra con Trufa 100g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/rulos-queso-de-cabra-con-trufa-100g.jpg" alt="Rulos Queso de Cabra con Trufa 100g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','iconos/Cabra.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Rulos Queso de Cabra con Trufa 100g</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Rulos de cabra con trufa</p>
@@ -958,7 +959,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="quesos-lacteos-cabra" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/rulos-queso-de-cabra-natural-100g.jpg" alt="Rulos Queso de Cabra Natural 100g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','fa-cheese','#ffcc33')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #000000;"><img src="fotos/rulos-queso-de-cabra-natural-100g.jpg" alt="Rulos Queso de Cabra Natural 100g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#000000','iconos/Cabra.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Rulos Queso de Cabra Natural 100g</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Rulos de cabra naturales</p>
@@ -971,7 +972,7 @@ function imgFallback(el, color, icon, iconColor) {
 
             <!-- PRODUCTOS: Embutidos y cárnicos -->
             <div class="product-card" data-category="embutidos-carnicos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/manteca-de-cerdo-tucurrique.jpg" alt="Manteca de Cerdo Tucurrique" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','fa-bacon','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #666633;"><img src="fotos/manteca-de-cerdo-tucurrique.jpg" alt="Manteca de Cerdo Tucurrique" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#666633','iconos/Embutido.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Manteca de Cerdo Tucurrique</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Manteca artesanal para cocinar</p>
@@ -984,7 +985,7 @@ function imgFallback(el, color, icon, iconColor) {
 
             <!-- PRODUCTOS: Otros productos -->
             <div class="product-card" data-category="otros-productos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/cafe-cerro-la-cruz-san-marcos-de-tarazu.jpg" alt="Café Cerro la Cruz San Marcos de Tarazu" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-mug-hot','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/cafe-cerro-la-cruz-san-marcos-de-tarazu.jpg" alt="Café Cerro la Cruz San Marcos de Tarazu" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','iconos/Tortilla.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Café Cerro la Cruz San Marcos de Tarazu</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Café de Tarazú, Costa Rica</p>
@@ -996,7 +997,7 @@ function imgFallback(el, color, icon, iconColor) {
             </div>
 
             <div class="product-card" data-category="otros-productos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/tamal.jpg" alt="Tamal" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','fa-utensils','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #fd6f2f;"><img src="fotos/tamal.jpg" alt="Tamal" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#fd6f2f','iconos/Tortilla.svg')"></div>
                 <div class="product-info" style="padding: 25px;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;">Tamal</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;">Tamal tradicional costarricense</p>
