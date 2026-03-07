@@ -1431,6 +1431,11 @@ window.filterProducts = function(category, categoryName) {
     window.productsTitle.textContent = categoryName;
     let visibleCount = 0;
     products.forEach(product => {
+        const isOutOfStock = product.getAttribute('data-out-of-stock') === 'true';
+        if (isOutOfStock) {
+            product.style.display = 'none';
+            return;
+        }
         if (category === 'todos' || product.getAttribute('data-category') === category) {
             product.style.display = 'block';
             product.style.animation = 'fadeIn 0.5s ease';
@@ -1487,6 +1492,32 @@ function closeMobileMenu() {
     if (mobileNav) mobileNav.style.display = 'none';
     if (btn) btn.innerHTML = '<i class="fas fa-bars"></i>';
 }
+</script>
+
+
+<script>
+async function checkInventory() {
+    try {
+        const response = await fetch('https://loyverse-inventory.asudasassi.workers.dev', { mode: 'cors', cache: 'no-cache' });
+        const data = await response.json();
+        const outOfStock = data.outOfStock || [];
+
+        document.querySelectorAll('.product-card').forEach(card => {
+            const img = card.querySelector('img[data-variants]');
+            if (!img) return;
+            const variants = img.getAttribute('data-variants').split(',');
+            const isOutOfStock = variants.every(id => outOfStock.includes(id.trim()));
+            if (isOutOfStock) {
+                card.style.display = 'none';
+                card.setAttribute('data-out-of-stock', 'true');
+            }
+        });
+    } catch (e) {
+        console.log('Inventory check failed:', e);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', checkInventory);
 </script>
 
 </body>
