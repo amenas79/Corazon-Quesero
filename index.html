@@ -551,17 +551,7 @@ function imgFallback(el, color, icon, iconColor) {
                     <button class="add-to-cart" data-product="Queso Palmito 24g Don Beto" data-price="2500" data-weight="24g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
                 </div>
             </div>
-                                                                                                <div class="product-card" data-category="quesos-lacteos" data-out-of-stock="true" style="display:none; background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/queso-tipo-amarillo-las-abras.jpg" data-variants="57560d94-b243-40ac-a09a-72f8959e417a" alt="Queso Tipo Amarillo Las Abras" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
-                <div class="product-info" style="padding: 15px;">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Queso Tipo Amarillo Las Abras" data-en="Las Abras Yellow Cheese">Queso Tipo Amarillo Las Abras</h3>
-                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;"></p>
-                    <p style="font-size:0.85rem; color:#333333; margin-bottom:8px; font-weight:600;">Unidad</p>
-                    <div class="product-price" style="font-weight: 700; font-size: 1.2rem; color: #1F8A84; margin-bottom: 10px;">₡1,450</div>
-                    <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
-                    <button class="add-to-cart" data-product="Queso Tipo Amarillo Las Abras" data-price="1450" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
-                </div>
-            </div>
+                                                                                                
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
                 <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/queso-turrialba.jpg" data-variants="64b4e03d-547f-4b63-b20e-84262fb85447,95da85d3-5cc2-45c9-af9c-010498abb372,9178ec6f-6f8c-406a-8bd9-3a39d7408f98,1ab5b0f5-e745-4646-953e-bdd78d3ace52" alt="Queso Turrialba" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
                 <div class="product-info" style="padding: 15px;">
@@ -2473,13 +2463,13 @@ function imgFallback(el, color, icon, iconColor) {
                 <div class="product-info" style="padding: 15px;">
                     <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Melo Kombucha" data-en="Melo Kombucha">Melo Kombucha</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 10px;"></p>
-                    <select class="flavor-select" onchange="this.closest('.product-card').querySelector('.add-to-cart').dataset.product='Melo Kombucha - '+this.value" style="width:100%; padding:7px 10px; border:2px solid #F6F1E8; border-radius:10px; font-family:inherit; font-size:0.85rem; color:#333; margin-bottom:10px; cursor:pointer;">
-                        <option value="Fresa Menta">🍓 Fresa Menta</option>
-                        <option value="Mora Limón">🍋 Mora Limón</option>
-                        <option value="Naranja Hierbabuena">🍊 Naranja Hierbabuena</option>
-                        <option value="Piña Albahaca">🍍 Piña Albahaca</option>
-                        <option value="Remolacha Limon">🫚 Remolacha Limón</option>
-                        <option value="Roots">🌿 Roots</option>
+                    <select class="flavor-select" onchange="updateFlavorVariant(this,'Melo Kombucha')" style="width:100%; padding:7px 10px; border:2px solid #F6F1E8; border-radius:10px; font-family:inherit; font-size:0.85rem; color:#333; margin-bottom:10px; cursor:pointer;">
+                        <option value="Fresa Menta" data-variant="577a1efa-3674-4fff-ad25-1fa66fd21589">🍓 Fresa Menta</option>
+                        <option value="Mora Limón" data-variant="34c7e2fa-0b1e-4dca-85db-3599d4a2b103">🍋 Mora Limón</option>
+                        <option value="Naranja Hierbabuena" data-variant="b72a312b-ab86-4182-84dd-8625841e2b5e">🍊 Naranja Hierbabuena</option>
+                        <option value="Piña Albahaca" data-variant="01a8ddc7-c700-4c42-9c08-9149a0c91fca">🍍 Piña Albahaca</option>
+                        <option value="Remolacha Limón" data-variant="d16694cd-99c3-408a-b863-d57be6d37648">🫚 Remolacha Limón</option>
+                        <option value="Roots" data-variant="e97a49f8-e220-484c-ac57-644811c3a49a">🌿 Roots</option>
                     </select>
                     <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡2,300</div>
                     <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
@@ -2491,11 +2481,12 @@ function imgFallback(el, color, icon, iconColor) {
                 <div class="product-info" style="padding: 15px;">
                     <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Yogurt Líquido Don Lico" data-en="Don Lico Liquid Yogurt">Yogurt Líquido Don Lico</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 10px;"></p>
-                    <select class="flavor-select" onchange="this.closest('.product-card').querySelector('.add-to-cart').dataset.product='Yogurt Líquido Don Lico - '+this.value" style="width:100%; padding:7px 10px; border:2px solid #F6F1E8; border-radius:10px; font-family:inherit; font-size:0.85rem; color:#333; margin-bottom:10px; cursor:pointer;">
-                        <option value="Arándano">🍇 Arándano</option>
-                        <option value="Fresa">🍓 Fresa</option>
-                        <option value="Mora">🍇 Mora</option>
-                        <option value="Naranja-Piña">🍊 Naranja-Piña</option>
+                    <select class="flavor-select" onchange="updateFlavorVariant(this,'Yogurt Líquido Don Lico')" style="width:100%; padding:7px 10px; border:2px solid #F6F1E8; border-radius:10px; font-family:inherit; font-size:0.85rem; color:#333; margin-bottom:10px; cursor:pointer;">
+                        <option value="Arándano" data-variant="99bb4cd8-1db0-4031-bd6f-50c1adeab6e4">🍇 Arándano</option>
+                        <option value="Fresa" data-variant="1c13fa9c-8db0-4498-b5cb-c6e9ecc42c71">🍓 Fresa</option>
+                        <option value="Maracuyá" data-variant="bca3c7ec-5603-41fa-bcda-4ff2c18a707f">🍋 Maracuyá</option>
+                        <option value="Mora" data-variant="8fc4db29-88d6-44ae-8c8e-5bb1d2debcad">🍇 Mora</option>
+                        <option value="Naranja-Piña" data-variant="">🍊 Naranja-Piña</option>
                     </select>
                     <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡2,500</div>
                     <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
@@ -2687,10 +2678,10 @@ function imgFallback(el, color, icon, iconColor) {
                 <div class="product-info" style="padding: 15px;">
                     <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Yogurt El Torito" data-en="Yogurt El Torito">Yogurt El Torito</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="" data-en=""></p>
-                    <select class="flavor-select" onchange="this.closest('.product-card').querySelector('.add-to-cart').dataset.product='Yogurt El Torito - '+this.value" style="width:100%; padding:7px 10px; border:2px solid #F6F1E8; border-radius:10px; font-family:inherit; font-size:0.85rem; color:#333; margin-bottom:10px; cursor:pointer;">
-                        <option value="Frutas">🍓 Frutas</option>
-                        <option value="Guanábana">🍈 Guanábana</option>
-                        <option value="Kiwi">🥝 Kiwi</option>
+                    <select class="flavor-select" onchange="updateFlavorVariant(this,'Yogurt El Torito')" style="width:100%; padding:7px 10px; border:2px solid #F6F1E8; border-radius:10px; font-family:inherit; font-size:0.85rem; color:#333; margin-bottom:10px; cursor:pointer;">
+                        <option value="Frutas" data-variant="">🍓 Frutas</option>
+                        <option value="Guanábana" data-variant="06c36e6e-d7ef-4a47-a469-fcef020bd5d1">🍈 Guanábana</option>
+                        <option value="Kiwi" data-variant="fe58cf98-8b12-464a-a88c-fab277b3dc7d">🥝 Kiwi</option>
                     </select>
                     <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡2.200</div>
                     <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
@@ -3278,30 +3269,68 @@ function closeMobileMenu() {
 
 
 <script>
+function updateFlavorVariant(select, productBase) {
+    const option = select.options[select.selectedIndex];
+    const card = select.closest('.product-card');
+    card.querySelector('.add-to-cart').dataset.product = productBase + ' - ' + option.value;
+}
+
 async function checkInventory() {
     try {
         const response = await fetch('https://loyverse-inventory.asudasassi.workers.dev', { mode: 'cors', cache: 'no-cache' });
         const data = await response.json();
         const outOfStock = data.outOfStock || [];
 
+        // Handle regular product cards
         document.querySelectorAll('.product-card').forEach(card => {
             const img = card.querySelector('img[data-variants]');
             if (!img) return;
             const rawVariants = img.getAttribute('data-variants') || '';
             const variants = rawVariants.split(',').map(v => v.trim()).filter(v => v.length > 0);
-            if (variants.length === 0) return; // no Loyverse variants = always show
+            if (variants.length === 0) return;
             const isOutOfStock = variants.every(id => outOfStock.includes(id));
             if (isOutOfStock) {
                 card.style.display = 'none';
                 card.setAttribute('data-out-of-stock', 'true');
             } else {
-                // Reactivar si tiene stock
                 card.removeAttribute('data-out-of-stock');
-                if (card.style.display === 'none') {
-                    card.style.display = '';
-                }
+                if (card.style.display === 'none') card.style.display = '';
             }
         });
+
+        // Handle dropdown cards - hide/show individual options
+        document.querySelectorAll('.flavor-select').forEach(select => {
+            const options = select.querySelectorAll('option');
+            let firstAvailable = null;
+            options.forEach(opt => {
+                const variantId = opt.getAttribute('data-variant') || '';
+                if (!variantId) return; // no variant = always show
+                if (outOfStock.includes(variantId)) {
+                    opt.style.display = 'none';
+                    opt.disabled = true;
+                } else {
+                    opt.style.display = '';
+                    opt.disabled = false;
+                    if (!firstAvailable) firstAvailable = opt;
+                }
+            });
+            // Select first available option
+            if (firstAvailable) {
+                select.value = firstAvailable.value;
+                select.dispatchEvent(new Event('change'));
+            }
+            // Hide card if all options are out of stock
+            const allOut = Array.from(options).every(o => o.disabled || !o.getAttribute('data-variant'));
+            const card = select.closest('.product-card');
+            if (allOut) {
+                card.style.display = 'none';
+                card.setAttribute('data-out-of-stock', 'true');
+            } else {
+                card.removeAttribute('data-out-of-stock');
+                if (card.style.display === 'none') card.style.display = '';
+            }
+        });
+
     } catch (e) {
         console.log('Inventory check failed:', e);
     }
