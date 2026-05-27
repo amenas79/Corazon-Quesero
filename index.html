@@ -250,6 +250,7 @@ function imgFallback(el, color, icon, iconColor) {
                 <select id="deliveryLocation" style="width: 100%; padding: 12px; border: 2px solid #ffcc33; border-radius: 10px; font-size: 1rem; color: #333333; background: #FFFFFF; cursor: pointer; outline: none;" onchange="calculateShipping()">
                     <option value="" disabled selected data-es="Selecciona tu ubicación" data-en="Select your location">Selecciona tu ubicación</option>
 					<option value="0" data-es="📍 Paso a recojerlo (Gratis)" data-en="📍 Pick it up (Free)">📍 Paso a recojerlo (Gratis)</option>
+                    <option value="express" data-es="🚀 Envío Express — A convenir" data-en="🚀 Express Shipping — To be agreed">🚀 Envío Express — A convenir</option>
 					<!-- ENTREGAS TEMPORALMENTE DESACTIVADAS
 					<option value="1000" data-es="📍 Santo Domingo (₡1,000)" data-en="📍 Santo Domingo (₡1,000)">📍 Santo Domingo (₡1,000)</option>
 					<option value="2500" data-es="📍 Heredia Centro (₡2,500)" data-en="📍 Heredia Centro (₡2,500)">📍 Heredia Centro (₡2,500)</option>
@@ -426,14 +427,17 @@ function imgFallback(el, color, icon, iconColor) {
             
             
             <div class="product-card" data-category="quesos-lacteos" data-out-of-stock="true" style="display:none; background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/mantequilla-artesanal.jpg" data-variants="324fe0a5-b994-4496-a8da-0596e2f37efe" alt="Mantequilla Artesana Las Abras" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #FFFFFF;"><img src="fotos/mantequilla-artesanal.jpg" data-variants="324fe0a5-b994-4496-a8da-0596e2f37efe" alt="Mantequilla Artesana Las Abras" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#FFFFFF','fa-cheese','#FFFFFF')"></div>
                 <div class="product-info" style="padding: 15px;">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Mantequilla Artesana Las Abras" data-en="Las Abras Artisan Butter">Mantequilla Artesana Las Abras</h3>
-                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;"></p>
-                    <div class="product-price" style="font-weight: 700; font-size: 1.2rem; color: #1F8A84; margin-bottom: 4px;">₡5,450 <span style="font-size:0.75rem; font-weight:400; color:#666633;">/kg (aprox.)</span></div>
-                    <p style="font-size:0.75rem; color:#fd6f2f; margin-bottom:8px; font-style:italic;">* El peso puede variar ligeramente</p>
+                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Mantequilla Artesana Las Abras" data-en="Mantequilla Artesana Las Abras">Mantequilla Artesana Las Abras</h3>
+                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="₡5.450/kg" data-en="₡5.450/kg">₡5.450/kg</p>
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                        <input type="number" class="gramos-input" min="1" placeholder="Gramos" oninput="calcGranel(this, 5450)" style="width:100%; padding:8px 10px; border:2px solid #ffcc33; border-radius:10px; font-size:0.9rem; color:#333; outline:none;">
+                        <span style="color:#666; font-size:0.85rem; white-space:nowrap;">g</span>
+                    </div>
+                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡0</div>
                     <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
-                    <button class="add-to-cart" data-product="Mantequilla Artesana Las Abras" data-price="5450" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
+                    <button class="add-to-cart" data-product="Mantequilla Artesana Las Abras" data-price="0" data-weight="Granel" disabled style="width: 100%; padding: 10px; background: #999; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: not-allowed; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Indicar gramos" data-en="Enter grams">Indicar gramos</span></button>
                 </div>
             </div>
                         <div class="product-card" data-category="quesos-lacteos" data-out-of-stock="true" style="display:none; background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
@@ -483,26 +487,31 @@ function imgFallback(el, color, icon, iconColor) {
                 </div>
             </div>
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/queso-ahumado.jpg" data-variants="820f6a7c-7c7d-49db-bccc-a78e3801291b" alt="Queso Ahumado" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #FFFFFF;"><img src="fotos/queso-ahumado.jpg" data-variants="820f6a7c-7c7d-49db-bccc-a78e3801291b" alt="Queso Ahumado" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#FFFFFF','fa-cheese','#FFFFFF')"></div>
                 <div class="product-info" style="padding: 15px;">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Queso Ahumado" data-en="Smoked Cheese">Queso Ahumado</h3>
-                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="Se vende por paquete, peso puede variar" data-en="Sold by package, weight may vary">Se vende por paquete, peso puede variar</p>
-                    <p style="font-size:0.85rem; color:#333333; margin-bottom:8px; font-weight:600;">Aprox. 1kg</p>
-                    <div class="product-price" style="font-weight: 700; font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡5,600</div>
-                    <p style="color: #fd6f2f; font-size: 0.8rem; margin-top: 5px;">*El peso puede variar ligeramente</p>
+                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Queso Ahumado" data-en="Queso Ahumado">Queso Ahumado</h3>
+                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="Se vende por paquete, peso puede variar · ₡5.600/kg" data-en="Se vende por paquete, peso puede variar · ₡5.600/kg">Se vende por paquete, peso puede variar · ₡5.600/kg</p>
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                        <input type="number" class="gramos-input" min="1" placeholder="Gramos" oninput="calcGranel(this, 5600)" style="width:100%; padding:8px 10px; border:2px solid #ffcc33; border-radius:10px; font-size:0.9rem; color:#333; outline:none;">
+                        <span style="color:#666; font-size:0.85rem; white-space:nowrap;">g</span>
+                    </div>
+                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡0</div>
                     <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
-                    <button class="add-to-cart" data-product="Queso Ahumado" data-price="5600" data-weight="Aprox. 1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
+                    <button class="add-to-cart" data-product="Queso Ahumado" data-price="0" data-weight="Granel" disabled style="width: 100%; padding: 10px; background: #999; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: not-allowed; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Indicar gramos" data-en="Enter grams">Indicar gramos</span></button>
                 </div>
             </div>
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/queso-ahumado-rallado.jpg" data-variants="2ef3f8aa-4b21-4438-8a60-872a65c8e23d" alt="Queso Ahumado Rallado" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/queso-ahumado-rallado.jpg" data-variants="2ef3f8aa-4b21-4438-8a60-872a65c8e23d" alt="Queso Ahumado Rallado Granel" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
                 <div class="product-info" style="padding: 15px;">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Queso Ahumado Rallado" data-en="Shredded Smoked Cheese">Queso Ahumado Rallado</h3>
-                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="Listo para usar en tus recetas" data-en="Ready to use in your recipes">Listo para usar en tus recetas</p>
-                    <select class="weight-selector" onchange="updatePrice(this)" style="width:100%; padding:8px; border:2px solid #ffcc33; border-radius:10px; font-size:0.85rem; color:#333333; background:#FFFFFF; cursor:pointer; outline:none; margin-bottom:8px;"><option value="1400" data-weight="250g">250g</option><option value="2800" data-weight="500g">500g</option><option value="5600" data-weight="1kg" selected>1kg</option></select>
-                    <div class="product-price" style="font-weight: 700; font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡5,600</div>
+                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Queso Ahumado Rallado Granel" data-en="Shredded Smoked Cheese by Weight">Queso Ahumado Rallado Granel</h3>
+                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="Listo para usar en tus recetas · ₡5.600/kg" data-en="Ready to use in your recipes · ₡5,600/kg">Listo para usar en tus recetas · ₡5.600/kg</p>
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                        <input type="number" class="gramos-input" min="1" placeholder="Gramos" oninput="calcGranel(this, 5600)" style="width:100%; padding:8px 10px; border:2px solid #ffcc33; border-radius:10px; font-size:0.9rem; color:#333; outline:none;">
+                        <span style="color:#666; font-size:0.85rem; white-space:nowrap;">g</span>
+                    </div>
+                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡0</div>
                     <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
-                    <button class="add-to-cart" data-product="Queso Ahumado Rallado" data-price="5600" data-weight="1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
+                    <button class="add-to-cart" data-product="Queso Ahumado Rallado Granel" data-price="0" data-weight="Granel" disabled style="width: 100%; padding: 10px; background: #999; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: not-allowed; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Indicar gramos" data-en="Enter grams">Indicar gramos</span></button>
                 </div>
             </div>
             <div class="product-card" data-category="quesos-lacteos" data-out-of-stock="true" style="display:none; background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
@@ -540,31 +549,20 @@ function imgFallback(el, color, icon, iconColor) {
                 </div>
             </div>
                                                 
-            <div class="product-card" data-category="quesos-lacteos" data-out-of-stock="true" style="display:none; background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/queso-palmito-24g-don-beto.jpg" data-variants="c48911a3-041e-43f6-8f76-39728b03545d" alt="Queso Palmito 24g Don Beto" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
-                <div class="product-info" style="padding: 15px;">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Queso Palmito 24g Don Beto" data-en="Don Beto Palmito Cheese 24g">Queso Palmito 24g Don Beto</h3>
-                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;"></p>
-                    <p style="font-size:0.85rem; color:#333333; margin-bottom:8px; font-weight:600;">24g</p>
-                    <div class="product-price" style="font-weight: 700; font-size: 1.2rem; color: #1F8A84; margin-bottom: 10px;">₡2,500</div>
-                    <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
-                    <button class="add-to-cart" data-product="Queso Palmito 24g Don Beto" data-price="2500" data-weight="24g" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
-                </div>
-            </div>
+            
                                                                                                 
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/queso-turrialba.jpg" data-variants="64b4e03d-547f-4b63-b20e-84262fb85447,95da85d3-5cc2-45c9-af9c-010498abb372,9178ec6f-6f8c-406a-8bd9-3a39d7408f98,1ab5b0f5-e745-4646-953e-bdd78d3ace52" alt="Queso Turrialba" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/queso-turrialba.jpg" data-variants="1ab5b0f5-e745-4646-953e-bdd78d3ace52" alt="Queso Turrialba Granel" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
                 <div class="product-info" style="padding: 15px;">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Queso Turrialba" data-en="Turrialba Cheese">Queso Turrialba</h3>
-                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="Denominación de Origen" data-en="Protected Designation of Origin">Denominación de Origen</p>
-                    <select class="weight-selector" onchange="updatePrice(this)" style="width:100%; padding:8px; border:2px solid #ffcc33; border-radius:10px; font-size:0.85rem; color:#333333; background:#FFFFFF; cursor:pointer; outline:none; margin-bottom:8px;">
-                        <option value="4800" data-weight="1 Kg">1 Kg</option>
-                        <option value="1200" data-weight="250 g">250 g</option>
-                        <option value="2400" data-weight="500 g">500 g</option>
-                    </select>
-                    <div class="product-price" style="font-weight: 700; font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡4,800</div>
+                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Queso Turrialba Granel" data-en="Turrialba Cheese by Weight">Queso Turrialba Granel</h3>
+                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="Denominación de Origen · ₡4.800/kg" data-en="Protected Designation of Origin · ₡4,800/kg">Denominación de Origen · ₡4.800/kg</p>
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                        <input type="number" class="gramos-input" min="1" placeholder="Gramos" oninput="calcGranel(this, 4800)" style="width:100%; padding:8px 10px; border:2px solid #ffcc33; border-radius:10px; font-size:0.9rem; color:#333; outline:none;">
+                        <span style="color:#666; font-size:0.85rem; white-space:nowrap;">g</span>
+                    </div>
+                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡0</div>
                     <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
-                    <button class="add-to-cart" data-product="Queso Turrialba" data-price="4800" data-weight="1kg" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
+                    <button class="add-to-cart" data-product="Queso Turrialba Granel" data-price="0" data-weight="Granel" disabled style="width: 100%; padding: 10px; background: #999; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: not-allowed; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Indicar gramos" data-en="Enter grams">Indicar gramos</span></button>
                 </div>
             </div>
                                                                                                 <!-- Lácteos de Cabra -->
@@ -1065,33 +1063,31 @@ function imgFallback(el, color, icon, iconColor) {
             
             
             <div class="product-card" data-category="embutidos-carnicos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #8B2020;"><img src="fotos/salchichon-morocho-chile-picante-tucurrique.jpg" data-variants="d5926813-70bc-4874-9787-ec2532487646" alt="Salchichon Morocho Chile Picante Tucurrique" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#8B2020','fa-drumstick-bite','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #FFFFFF;"><img src="fotos/salchichon-morocho-chile-picante-tucurrique.jpg" data-variants="d5926813-70bc-4874-9787-ec2532487646" alt="Salchichon Morocho Chile Picante Tucurrique" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#FFFFFF','fa-drumstick-bite','#FFFFFF')"></div>
                 <div class="product-info" style="padding: 15px;">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Salchichon Morocho Chile Picante Tucurrique" data-en="Tucurrique Morocho Spicy Chile Salami">Salchichon Morocho Chile Picante Tucurrique</h3>
-                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;"></p>
-                    <p style="font-size:0.85rem; color:#333333; margin-bottom:8px; font-weight:600;">Unidad</p>
-                    <div class="product-price" style="font-weight: 700; font-size: 1.2rem; color: #1F8A84; margin-bottom: 10px;">₡2,400</div>
-                    <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
+                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Salchichon Morocho Chile Picante Tucurrique" data-en="Salchichon Morocho Chile Picante Tucurrique">Salchichon Morocho Chile Picante Tucurrique</h3>
+                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="₡2.400/kg" data-en="₡2.400/kg">₡2.400/kg</p>
                     <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
-                        <label style="font-size:0.8rem; color:#666633; white-space:nowrap;">Cantidad (g):</label>
-                        <input type="number" min="100" step="50" placeholder="ej. 250" class="salchi-qty" style="width:100%; padding:6px 8px; border:2px solid #F6F1E8; border-radius:8px; font-family:inherit; font-size:0.85rem; color:#333;">
+                        <input type="number" class="gramos-input" min="1" placeholder="Gramos" oninput="calcGranel(this, 2400)" style="width:100%; padding:8px 10px; border:2px solid #ffcc33; border-radius:10px; font-size:0.9rem; color:#333; outline:none;">
+                        <span style="color:#666; font-size:0.85rem; white-space:nowrap;">g</span>
                     </div>
-                    <button class="add-to-cart" data-product="Salchichon Morocho Chile Picante Tucurrique" data-price="2400" data-weight="Unidad" onclick="var qty=this.closest('.product-info').querySelector('.salchi-qty').value; if(qty) this.dataset.weight=qty+'g';" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
+                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡0</div>
+                    <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
+                    <button class="add-to-cart" data-product="Salchichon Morocho Chile Picante Tucurrique" data-price="0" data-weight="Granel" disabled style="width: 100%; padding: 10px; background: #999; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: not-allowed; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Indicar gramos" data-en="Enter grams">Indicar gramos</span></button>
                 </div>
             </div>
             <div class="product-card" data-category="embutidos-carnicos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #8B2020;"><img src="fotos/salchichon-morocho-tucurrique.jpg" data-variants="27d74daf-510b-4e1c-b05e-04c7fdbe1434" alt="Salchichon Morocho Tucurrique" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#8B2020','fa-drumstick-bite','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #FFFFFF;"><img src="fotos/salchichon-morocho-tucurrique.jpg" data-variants="27d74daf-510b-4e1c-b05e-04c7fdbe1434" alt="Salchichon Morocho Tucurrique" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#FFFFFF','fa-drumstick-bite','#FFFFFF')"></div>
                 <div class="product-info" style="padding: 15px;">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Salchichon Morocho Tucurrique" data-en="Tucurrique Morocho Salami">Salchichon Morocho Tucurrique</h3>
-                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;"></p>
-                    <p style="font-size:0.85rem; color:#333333; margin-bottom:8px; font-weight:600;">Unidad</p>
-                    <div class="product-price" style="font-weight: 700; font-size: 1.2rem; color: #1F8A84; margin-bottom: 10px;">₡2,400</div>
-                    <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
+                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Salchichon Morocho Tucurrique" data-en="Salchichon Morocho Tucurrique">Salchichon Morocho Tucurrique</h3>
+                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="₡2.400/kg" data-en="₡2.400/kg">₡2.400/kg</p>
                     <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
-                        <label style="font-size:0.8rem; color:#666633; white-space:nowrap;">Cantidad (g):</label>
-                        <input type="number" min="100" step="50" placeholder="ej. 250" class="salchi-qty" style="width:100%; padding:6px 8px; border:2px solid #F6F1E8; border-radius:8px; font-family:inherit; font-size:0.85rem; color:#333;">
+                        <input type="number" class="gramos-input" min="1" placeholder="Gramos" oninput="calcGranel(this, 2400)" style="width:100%; padding:8px 10px; border:2px solid #ffcc33; border-radius:10px; font-size:0.9rem; color:#333; outline:none;">
+                        <span style="color:#666; font-size:0.85rem; white-space:nowrap;">g</span>
                     </div>
-                    <button class="add-to-cart" data-product="Salchichon Morocho Tucurrique" data-price="2400" data-weight="Unidad" onclick="var qty=this.closest('.product-info').querySelector('.salchi-qty').value; if(qty) this.dataset.weight=qty+'g';" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
+                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡0</div>
+                    <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
+                    <button class="add-to-cart" data-product="Salchichon Morocho Tucurrique" data-price="0" data-weight="Granel" disabled style="width: 100%; padding: 10px; background: #999; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: not-allowed; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Indicar gramos" data-en="Enter grams">Indicar gramos</span></button>
                 </div>
             </div>
             <div class="product-card" data-out-of-stock="true" data-category="embutidos-carnicos" style="display:none; background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
@@ -1147,23 +1143,31 @@ function imgFallback(el, color, icon, iconColor) {
                 </div>
             </div>
             <div class="product-card" data-category="embutidos-carnicos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #8B2020;"><img src="fotos/salchichón-jamonado-tucurrique.jpg" data-variants="6546794e-cbb4-45a2-abb7-59f253b32e20" alt="Salchichón Jamonado Tucurrique" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#8B2020','fa-drumstick-bite','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #FFFFFF;"><img src="fotos/salchichón-jamonado-tucurrique.jpg" data-variants="6546794e-cbb4-45a2-abb7-59f253b32e20" alt="Salchichón Jamonado Tucurrique" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#FFFFFF','fa-drumstick-bite','#FFFFFF')"></div>
                 <div class="product-info" style="padding: 15px;">
                     <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Salchichón Jamonado Tucurrique" data-en="Salchichón Jamonado Tucurrique">Salchichón Jamonado Tucurrique</h3>
-                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="" data-en=""></p>
-                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡2.955</div>
+                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="₡2.955/kg" data-en="₡2.955/kg">₡2.955/kg</p>
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                        <input type="number" class="gramos-input" min="1" placeholder="Gramos" oninput="calcGranel(this, 2955)" style="width:100%; padding:8px 10px; border:2px solid #ffcc33; border-radius:10px; font-size:0.9rem; color:#333; outline:none;">
+                        <span style="color:#666; font-size:0.85rem; white-space:nowrap;">g</span>
+                    </div>
+                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡0</div>
                     <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
-                    <button class="add-to-cart" data-product="Salchichón Jamonado Tucurrique" data-price="2955" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
+                    <button class="add-to-cart" data-product="Salchichón Jamonado Tucurrique" data-price="0" data-weight="Granel" disabled style="width: 100%; padding: 10px; background: #999; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: not-allowed; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Indicar gramos" data-en="Enter grams">Indicar gramos</span></button>
                 </div>
             </div>
             <div class="product-card" data-category="embutidos-carnicos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #8B2020;"><img src="fotos/salchichón-parrillero-tucurrique.jpg" data-variants="f2486d7b-1d13-4f7e-8a97-083de218e737" alt="Salchichón Parrillero Tucurrique" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#8B2020','fa-drumstick-bite','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #FFFFFF;"><img src="fotos/salchichón-parrillero-tucurrique.jpg" data-variants="f2486d7b-1d13-4f7e-8a97-083de218e737" alt="Salchichón Parrillero Tucurrique" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#FFFFFF','fa-drumstick-bite','#FFFFFF')"></div>
                 <div class="product-info" style="padding: 15px;">
                     <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Salchichón Parrillero Tucurrique" data-en="Salchichón Parrillero Tucurrique">Salchichón Parrillero Tucurrique</h3>
-                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="" data-en=""></p>
-                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡3.685</div>
+                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="₡3.685/kg" data-en="₡3.685/kg">₡3.685/kg</p>
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                        <input type="number" class="gramos-input" min="1" placeholder="Gramos" oninput="calcGranel(this, 3685)" style="width:100%; padding:8px 10px; border:2px solid #ffcc33; border-radius:10px; font-size:0.9rem; color:#333; outline:none;">
+                        <span style="color:#666; font-size:0.85rem; white-space:nowrap;">g</span>
+                    </div>
+                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡0</div>
                     <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
-                    <button class="add-to-cart" data-product="Salchichón Parrillero Tucurrique" data-price="3685" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
+                    <button class="add-to-cart" data-product="Salchichón Parrillero Tucurrique" data-price="0" data-weight="Granel" disabled style="width: 100%; padding: 10px; background: #999; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: not-allowed; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Indicar gramos" data-en="Enter grams">Indicar gramos</span></button>
                 </div>
             </div>
             <div class="product-card" data-category="embutidos-carnicos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
@@ -1491,72 +1495,30 @@ function imgFallback(el, color, icon, iconColor) {
                     <button class="add-to-cart" data-product="Piña de tamales" data-price="1800" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
                 </div>
             </div>
-            <div class="product-card" data-category="otros-productos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1A1A1A;"><img src="fotos/refresco-gaseoso-kolita-bolivar.jpg" data-variants="a1b1ad75-8584-485a-8363-a69989b14da0" alt="Refresco Gaseoso Kolita Bolivar" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1A1A1A','fa-glass-water','#FFFFFF')"></div>
+                        <div class="product-card" data-category="otros-productos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #1A1A1A;"><img src="fotos/refrescos-bolivar.jpg" data-variants="a1b1ad75-8584-485a-8363-a69989b14da0" alt="Refrescos Bolívar" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1A1A1A','fa-shopping-basket','#FFFFFF')"></div>
                 <div class="product-info" style="padding: 15px;">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Refresco Gaseoso Kolita Bolivar" data-en="Bolivar Kolita Soda">Refresco Gaseoso Kolita Bolivar</h3>
-                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;"></p>
-                    <p style="font-size:0.85rem; color:#333333; margin-bottom:8px; font-weight:600;">Unidad</p>
-                    <div class="product-price" style="font-weight: 700; font-size: 1.2rem; color: #1F8A84; margin-bottom: 10px;">₡750</div>
+                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Refrescos Bolívar" data-en="Bolívar Sodas">Refrescos Bolívar</h3>
+                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="" data-en=""></p>
+                    <select class="flavor-select" onchange="updateFlavorVariant(this,'Refresco Bolívar')" style="width:100%; padding:7px 10px; border:2px solid #F6F1E8; border-radius:10px; font-family:inherit; font-size:0.85rem; color:#333; margin-bottom:10px; cursor:pointer;">
+                        <option value="Kolita" data-variant="a1b1ad75-8584-485a-8363-a69989b14da0">🫐 Kolita</option>
+                        <option value="Limón" data-variant="9a3b88bf-d5de-4c7b-b44b-db65a48024f5">🍋 Limón</option>
+                        <option value="Piña" data-variant="29ec8500-15bd-4d49-80e5-42cce8c310d5">🍍 Piña</option>
+                        <option value="Toronja" data-variant="fe1f2017-fef8-43d0-bd66-08565f0739a1">🍊 Toronja</option>
+                        <option value="Uva" data-variant="155da70c-c0e0-4c04-9daf-000e92019c23">🍇 Uva</option>
+                        <option value="Zarza Parrilla" data-variant="15ad76eb-ba15-4d94-9199-12adef2d95c2">🌿 Zarza Parrilla</option>
+                    </select>
+                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡750</div>
                     <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
-                    <button class="add-to-cart" data-product="Refresco Gaseoso Kolita Bolivar" data-price="750" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
+                    <button class="add-to-cart" data-product="Refresco Bolívar - Kolita" data-price="750" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
                 </div>
             </div>
-            <div class="product-card" data-category="otros-productos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1A1A1A;"><img src="fotos/refresco-gaseoso-limon-bolivar.jpg" data-variants="9a3b88bf-d5de-4c7b-b44b-db65a48024f5" alt="Refresco Gaseoso Limón Bolivar" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1A1A1A','fa-glass-water','#FFFFFF')"></div>
-                <div class="product-info" style="padding: 15px;">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Refresco Gaseoso Limón Bolivar" data-en="Bolivar Lemon Soda">Refresco Gaseoso Limón Bolivar</h3>
-                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;"></p>
-                    <p style="font-size:0.85rem; color:#333333; margin-bottom:8px; font-weight:600;">Unidad</p>
-                    <div class="product-price" style="font-weight: 700; font-size: 1.2rem; color: #1F8A84; margin-bottom: 10px;">₡750</div>
-                    <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
-                    <button class="add-to-cart" data-product="Refresco Gaseoso Limón Bolivar" data-price="750" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
-                </div>
-            </div>
-            <div class="product-card" data-category="otros-productos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1A1A1A;"><img src="fotos/refresco-gaseoso-pina-bolivar.jpg" data-variants="29ec8500-15bd-4d49-80e5-42cce8c310d5" alt="Refresco Gaseoso Piña Bolivar" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1A1A1A','fa-glass-water','#FFFFFF')"></div>
-                <div class="product-info" style="padding: 15px;">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Refresco Gaseoso Piña Bolivar" data-en="Bolivar Pineapple Soda">Refresco Gaseoso Piña Bolivar</h3>
-                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;"></p>
-                    <p style="font-size:0.85rem; color:#333333; margin-bottom:8px; font-weight:600;">Unidad</p>
-                    <div class="product-price" style="font-weight: 700; font-size: 1.2rem; color: #1F8A84; margin-bottom: 10px;">₡750</div>
-                    <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
-                    <button class="add-to-cart" data-product="Refresco Gaseoso Piña Bolivar" data-price="750" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
-                </div>
-            </div>
-            <div class="product-card" data-category="otros-productos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1A1A1A;"><img src="fotos/refresco-gaseoso-toronja-bolivar.jpg" data-variants="fe1f2017-fef8-43d0-bd66-08565f0739a1" alt="Refresco Gaseoso Toronja Bolivar" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1A1A1A','fa-glass-water','#FFFFFF')"></div>
-                <div class="product-info" style="padding: 15px;">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Refresco Gaseoso Toronja Bolivar" data-en="Bolivar Grapefruit Soda">Refresco Gaseoso Toronja Bolivar</h3>
-                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;"></p>
-                    <p style="font-size:0.85rem; color:#333333; margin-bottom:8px; font-weight:600;">Unidad</p>
-                    <div class="product-price" style="font-weight: 700; font-size: 1.2rem; color: #1F8A84; margin-bottom: 10px;">₡750</div>
-                    <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
-                    <button class="add-to-cart" data-product="Refresco Gaseoso Toronja Bolivar" data-price="750" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
-                </div>
-            </div>
-            <div class="product-card" data-category="otros-productos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1A1A1A;"><img src="fotos/refresco-gaseoso-uva-bolivar.jpg" data-variants="155da70c-c0e0-4c04-9daf-000e92019c23" alt="Refresco Gaseoso Uva Bolivar" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1A1A1A','fa-glass-water','#FFFFFF')"></div>
-                <div class="product-info" style="padding: 15px;">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Refresco Gaseoso Uva Bolivar" data-en="Bolivar Grape Soda">Refresco Gaseoso Uva Bolivar</h3>
-                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;"></p>
-                    <p style="font-size:0.85rem; color:#333333; margin-bottom:8px; font-weight:600;">Unidad</p>
-                    <div class="product-price" style="font-weight: 700; font-size: 1.2rem; color: #1F8A84; margin-bottom: 10px;">₡750</div>
-                    <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
-                    <button class="add-to-cart" data-product="Refresco Gaseoso Uva Bolivar" data-price="750" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
-                </div>
-            </div>
-            <div class="product-card" data-category="otros-productos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1A1A1A;"><img src="fotos/refresco-gaseoso-zarza-parrilla-bolivar.jpg" data-variants="15ad76eb-ba15-4d94-9199-12adef2d95c2" alt="Refresco Gaseoso Zarza Parrilla Bolivar" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1A1A1A','fa-glass-water','#FFFFFF')"></div>
-                <div class="product-info" style="padding: 15px;">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Refresco Gaseoso Zarza Parrilla Bolivar" data-en="Bolivar Blackberry Soda">Refresco Gaseoso Zarza Parrilla Bolivar</h3>
-                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;"></p>
-                    <p style="font-size:0.85rem; color:#333333; margin-bottom:8px; font-weight:600;">Unidad</p>
-                    <div class="product-price" style="font-weight: 700; font-size: 1.2rem; color: #1F8A84; margin-bottom: 10px;">₡750</div>
-                    <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
-                    <button class="add-to-cart" data-product="Refresco Gaseoso Zarza Parrilla Bolivar" data-price="750" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
-                </div>
-            </div>
+
+            
+            
+            
+            
+            
             <div class="product-card" data-out-of-stock="true" data-category="otros-productos" style="display:none; background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
                 <div class="product-img" style="height: 220px; overflow: hidden; background: #1A1A1A;"><img src="fotos/rosquillas-de-maiz-dona-alice.jpg" data-variants="66840712-5cb6-459a-8d4f-b41c1024ecff" alt="Rosquillas de maíz - Doña Alice" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1A1A1A','fa-box','#FFFFFF')"></div>
                 <div class="product-info" style="padding: 15px;">
@@ -1569,7 +1531,7 @@ function imgFallback(el, color, icon, iconColor) {
                 </div>
             </div>
             <!-- PRODUCTOS: Otros productos -->
-                        <div class="product-card" data-category="otros-productos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
+                        <div class="product-card" data-category="otros-productos" data-out-of-stock="true" style="display:none; background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
                 <div class="product-img" style="height: 220px; overflow: hidden; background: #1A1A1A;"><img src="fotos/tortillas-alinadas-extra-queso.jpg" data-variants="7031bf3a-3939-45fc-ab67-e98520d5d070" alt="Tortillas Aliñadas Extra Queso" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1A1A1A','fa-bread-slice','#FFFFFF')"></div>
                 <div class="product-info" style="padding: 15px;">
                     <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Tortillas Aliñadas Extra Queso" data-en="Seasoned Extra Cheese Tortillas">Tortillas Aliñadas Extra Queso</h3>
@@ -1645,16 +1607,7 @@ function imgFallback(el, color, icon, iconColor) {
                     <button class="add-to-cart" data-product="Carné Prensada 250g Tucurrique" data-price="1365" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
                 </div>
             </div>
-            <div class="product-card" data-category="otros-productos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1A1A1A;"><img src="fotos/chocolate-80%-almendras.jpg" data-variants="c19c5d46-8c57-4a77-9f69-b48f71d3db6a" alt="Chocolate 80% Almendras" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1A1A1A','fa-shopping-basket','#FFFFFF')"></div>
-                <div class="product-info" style="padding: 15px;">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Chocolate 80% Almendras" data-en="Chocolate 80% Almendras">Chocolate 80% Almendras</h3>
-                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="" data-en=""></p>
-                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡2.000</div>
-                    <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
-                    <button class="add-to-cart" data-product="Chocolate 80% Almendras" data-price="2000" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
-                </div>
-            </div>
+            
             <div class="product-card" data-category="otros-productos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
                 <div class="product-img" style="height: 220px; overflow: hidden; background: #1A1A1A;"><img src="fotos/empanaditas-cady.jpg" data-variants="985545a8-e35a-4f64-8a6d-70d684b8fd4a" alt="Empanaditas - CaDy" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1A1A1A','fa-shopping-basket','#FFFFFF')"></div>
                 <div class="product-info" style="padding: 15px;">
@@ -1665,7 +1618,7 @@ function imgFallback(el, color, icon, iconColor) {
                     <button class="add-to-cart" data-product="Empanaditas - CaDy" data-price="1500" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
                 </div>
             </div>
-            <div class="product-card" data-category="otros-productos" data-out-of-stock="true" style="display:none; background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
+            <div class="product-card" data-category="otros-productos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
                 <div class="product-img" style="height: 220px; overflow: hidden; background: #1A1A1A;"><img src="fotos/huevos-de-pastoreo-10-un..jpg" data-variants="d50bdde7-95f0-479d-8828-b07e8ca4c529" alt="Huevos de pastoreo 10 un." style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1A1A1A','fa-shopping-basket','#FFFFFF')"></div>
                 <div class="product-info" style="padding: 15px;">
                     <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Huevos de pastoreo 10 un." data-en="Huevos de pastoreo 10 un.">Huevos de pastoreo 10 un.</h3>
@@ -1675,7 +1628,7 @@ function imgFallback(el, color, icon, iconColor) {
                     <button class="add-to-cart" data-product="Huevos de pastoreo 10 un." data-price="950" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
                 </div>
             </div>
-            <div class="product-card" data-category="otros-productos" data-out-of-stock="true" style="display:none; background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
+            <div class="product-card" data-category="otros-productos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
                 <div class="product-img" style="height: 220px; overflow: hidden; background: #1A1A1A;"><img src="fotos/huevos-de-pastoreo-30-un..jpg" data-variants="bc7be2ed-8208-42a1-b16a-110417b52754" alt="Huevos de pastoreo 30 un." style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1A1A1A','fa-shopping-basket','#FFFFFF')"></div>
                 <div class="product-info" style="padding: 15px;">
                     <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Huevos de pastoreo 30 un." data-en="Huevos de pastoreo 30 un.">Huevos de pastoreo 30 un.</h3>
@@ -1875,16 +1828,27 @@ function imgFallback(el, color, icon, iconColor) {
                     <button class="add-to-cart" data-product="Vergel Mermelada Maracuyá Mango" data-price="3800" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
                 </div>
             </div>
-            <div class="product-card" data-category="otros-productos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1A1A1A;"><img src="fotos/waffle-chocolate-110g.jpg" data-variants="d306850e-4633-4311-ba02-1990c69f400f" alt="Waffle Chocolate 110g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1A1A1A','fa-shopping-basket','#FFFFFF')"></div>
+            <div class="product-card" data-category="otros-productos" data-out-of-stock="true" style="display:none; background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #1A1A1A;"><img src="fotos/tortilla-la-villa.jpg" data-variants="8d152cf3-e2e3-4efd-a909-7565b5c292f8" alt="Tortilla La Villa" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1A1A1A','fa-shopping-basket','#FFFFFF')"></div>
                 <div class="product-info" style="padding: 15px;">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Waffle Chocolate 110g" data-en="Waffle Chocolate 110g">Waffle Chocolate 110g</h3>
+                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Tortilla La Villa" data-en="Tortilla La Villa">Tortilla La Villa</h3>
                     <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="" data-en=""></p>
-                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡1.300</div>
+                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡1.800</div>
                     <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
-                    <button class="add-to-cart" data-product="Waffle Chocolate 110g" data-price="1300" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
+                    <button class="add-to-cart" data-product="Tortilla La Villa" data-price="1800" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
                 </div>
             </div>
+            <div class="product-card" data-category="otros-productos" data-out-of-stock="true" style="display:none; background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #1A1A1A;"><img src="fotos/vergel-mermelada-maracuya-mango.jpg" data-variants="1e6ee9a2-33cc-4550-a396-d3119b8cb080" alt="Vergel Mermelada Maracuyá Mango" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1A1A1A','fa-shopping-basket','#FFFFFF')"></div>
+                <div class="product-info" style="padding: 15px;">
+                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Vergel Mermelada Maracuyá Mango" data-en="Vergel Passion Fruit Mango Jam">Vergel Mermelada Maracuyá Mango</h3>
+                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="" data-en=""></p>
+                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡3.800</div>
+                    <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
+                    <button class="add-to-cart" data-product="Vergel Mermelada Maracuyá Mango" data-price="3800" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
+                </div>
+            </div>
+            
         
             <div class="product-card" data-category="quesos-lacteos" data-out-of-stock="true" style="display:none; background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
                 <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/cafano-dota-cream-ajo-pimienta-150g.jpg" alt="Cafano Dota Cream Ajo y Pimienta 150g" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
@@ -2169,23 +2133,31 @@ function imgFallback(el, color, icon, iconColor) {
                 </div>
             </div>
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/parmezano.jpg" alt="Parmesano - Santo Stefano" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #FFFFFF;"><img src="fotos/parmezano.jpg" data-variants="" alt="Parmesano - Santo Stefano" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#FFFFFF','fa-cheese','#FFFFFF')"></div>
                 <div class="product-info" style="padding: 15px;">
                     <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Parmesano - Santo Stefano" data-en="Parmesano - Santo Stefano">Parmesano - Santo Stefano</h3>
-                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;"></p>
-                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡16,000</div>
+                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="₡16.000/kg" data-en="₡16.000/kg">₡16.000/kg</p>
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                        <input type="number" class="gramos-input" min="1" placeholder="Gramos" oninput="calcGranel(this, 16000)" style="width:100%; padding:8px 10px; border:2px solid #ffcc33; border-radius:10px; font-size:0.9rem; color:#333; outline:none;">
+                        <span style="color:#666; font-size:0.85rem; white-space:nowrap;">g</span>
+                    </div>
+                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡0</div>
                     <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
-                    <button class="add-to-cart" data-product="Parmesano - Santo Stefano" data-price="16000" data-weight="1 unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
+                    <button class="add-to-cart" data-product="Parmesano - Santo Stefano" data-price="0" data-weight="Granel" disabled style="width: 100%; padding: 10px; background: #999; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: not-allowed; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Indicar gramos" data-en="Enter grams">Indicar gramos</span></button>
                 </div>
             </div>
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/queso-provolone.jpg" alt="Provolone" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #FFFFFF;"><img src="fotos/queso-provolone.jpg" data-variants="" alt="Provolone" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#FFFFFF','fa-cheese','#FFFFFF')"></div>
                 <div class="product-info" style="padding: 15px;">
                     <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Provolone" data-en="Provolone">Provolone</h3>
-                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;"></p>
-                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡13,850</div>
+                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="₡13.850/kg" data-en="₡13.850/kg">₡13.850/kg</p>
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                        <input type="number" class="gramos-input" min="1" placeholder="Gramos" oninput="calcGranel(this, 13850)" style="width:100%; padding:8px 10px; border:2px solid #ffcc33; border-radius:10px; font-size:0.9rem; color:#333; outline:none;">
+                        <span style="color:#666; font-size:0.85rem; white-space:nowrap;">g</span>
+                    </div>
+                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡0</div>
                     <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
-                    <button class="add-to-cart" data-product="Provolone" data-price="13850" data-weight="1 unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
+                    <button class="add-to-cart" data-product="Provolone" data-price="0" data-weight="Granel" disabled style="width: 100%; padding: 10px; background: #999; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: not-allowed; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Indicar gramos" data-en="Enter grams">Indicar gramos</span></button>
                 </div>
             </div>
             <div class="product-card" data-category="panaderia" data-out-of-stock="true" style="display:none; background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
@@ -2319,13 +2291,17 @@ function imgFallback(el, color, icon, iconColor) {
                 </div>
             </div>
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/queso-seco-molido.jpg" alt="Queso Seco Molido" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #FFFFFF;"><img src="fotos/queso-seco-molido.jpg" data-variants="" alt="Queso Seco Molido" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#FFFFFF','fa-cheese','#FFFFFF')"></div>
                 <div class="product-info" style="padding: 15px;">
                     <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Queso Seco Molido" data-en="Queso Seco Molido">Queso Seco Molido</h3>
-                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;"></p>
-                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡5,600</div>
+                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="₡5.600/kg" data-en="₡5.600/kg">₡5.600/kg</p>
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                        <input type="number" class="gramos-input" min="1" placeholder="Gramos" oninput="calcGranel(this, 5600)" style="width:100%; padding:8px 10px; border:2px solid #ffcc33; border-radius:10px; font-size:0.9rem; color:#333; outline:none;">
+                        <span style="color:#666; font-size:0.85rem; white-space:nowrap;">g</span>
+                    </div>
+                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡0</div>
                     <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
-                    <button class="add-to-cart" data-product="Queso Seco Molido" data-price="5600" data-weight="1 unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
+                    <button class="add-to-cart" data-product="Queso Seco Molido" data-price="0" data-weight="Granel" disabled style="width: 100%; padding: 10px; background: #999; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: not-allowed; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Indicar gramos" data-en="Enter grams">Indicar gramos</span></button>
                 </div>
             </div>
             <div class="product-card" data-out-of-stock="true" data-category="quesos-lacteos" style=" display:none;background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
@@ -2494,13 +2470,17 @@ function imgFallback(el, color, icon, iconColor) {
                 </div>
             </div>
             <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
-                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/mantequilla-artesana-la-herencia.jpg" data-variants="c64abd47-c3fe-4840-9dc8-0057075ab2cb" alt="Mantequilla Artesana La Herencia" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #FFFFFF;"><img src="fotos/mantequilla-artesana-la-herencia.jpg" data-variants="c64abd47-c3fe-4840-9dc8-0057075ab2cb" alt="Mantequilla Artesana La Herencia" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#FFFFFF','fa-cheese','#FFFFFF')"></div>
                 <div class="product-info" style="padding: 15px;">
                     <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Mantequilla Artesana La Herencia" data-en="Mantequilla Artesana La Herencia">Mantequilla Artesana La Herencia</h3>
-                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="" data-en=""></p>
-                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡6.240</div>
+                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="₡6.240/kg" data-en="₡6.240/kg">₡6.240/kg</p>
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                        <input type="number" class="gramos-input" min="1" placeholder="Gramos" oninput="calcGranel(this, 6240)" style="width:100%; padding:8px 10px; border:2px solid #ffcc33; border-radius:10px; font-size:0.9rem; color:#333; outline:none;">
+                        <span style="color:#666; font-size:0.85rem; white-space:nowrap;">g</span>
+                    </div>
+                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡0</div>
                     <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
-                    <button class="add-to-cart" data-product="Mantequilla Artesana La Herencia" data-price="6240" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
+                    <button class="add-to-cart" data-product="Mantequilla Artesana La Herencia" data-price="0" data-weight="Granel" disabled style="width: 100%; padding: 10px; background: #999; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: not-allowed; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Indicar gramos" data-en="Enter grams">Indicar gramos</span></button>
                 </div>
             </div>
             <div class="product-card" data-category="quesos-lacteos" data-out-of-stock="true" style="display:none; background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
@@ -2688,6 +2668,20 @@ function imgFallback(el, color, icon, iconColor) {
                     <button class="add-to-cart" data-product="Yogurt El Torito - Frutas" data-price="2200" data-weight="Unidad" style="width: 100%; padding: 10px; background: #000000; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Añadir" data-en="Add">Añadir</span></button>
                 </div>
             </div>
+            <div class="product-card" data-category="quesos-lacteos" style="background: #FFFFFF; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border: 2px solid #F6F1E8;">
+                <div class="product-img" style="height: 220px; overflow: hidden; background: #1F8A84;"><img src="fotos/queso-maduro-granel.jpg" data-variants="eb24ab0e-209e-4314-a749-b949b772b1e3" alt="Queso Maduro Granel" style="width: 100%; height: 100%; object-fit: cover;" onerror="imgFallback(this,'#1F8A84','fa-cheese','#FFFFFF')"></div>
+                <div class="product-info" style="padding: 15px;">
+                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #000000; font-weight: 600;" data-es="Queso Maduro Granel" data-en="Aged Cheese by Weight">Queso Maduro Granel</h3>
+                    <p class="product-desc" style="color: #666633; font-size: 0.9rem; margin-bottom: 12px;" data-es="₡6.000/kg" data-en="₡6,000/kg">₡6.000/kg</p>
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                        <input type="number" class="gramos-input" min="1" placeholder="Gramos" oninput="calcGranel(this, 6000)" style="width:100%; padding:8px 10px; border:2px solid #ffcc33; border-radius:10px; font-size:0.9rem; color:#333; outline:none;">
+                        <span style="color:#666; font-size:0.85rem; white-space:nowrap;">g</span>
+                    </div>
+                    <div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: #1F8A84; margin-bottom: 10px;">₡0</div>
+                    <button class="ver-mas-btn" onclick="openProductModal(this)" style="width:100%; padding:8px; background:none; border:2px solid #1F8A84; border-radius:10px; color:#1F8A84; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:6px; transition:all 0.2s;" onmouseover="this.style.background='#1F8A84';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#1F8A84'" data-es="🔍 Ver más información" data-en="🔍 More information">🔍 Ver más información</button>
+                    <button class="add-to-cart" data-product="Queso Maduro Granel" data-price="0" data-weight="Granel" disabled style="width: 100%; padding: 10px; background: #999; color: #FFFFFF; border: none; border-radius: 10px; font-weight: 600; cursor: not-allowed; display: flex; align-items: center; justify-content: center; gap: 6px;" data-es-btn data-en-btn><i class="fas fa-cart-plus"></i> <span data-es="Indicar gramos" data-en="Enter grams">Indicar gramos</span></button>
+                </div>
+            </div>
 
             
             
@@ -2866,7 +2860,8 @@ window.calculateShipping = function() {
     const locationSelect = document.getElementById('deliveryLocation');
     if (!locationSelect || !locationSelect.value) return;
     const selectedOption = locationSelect.options[locationSelect.selectedIndex];
-    shippingCost = parseInt(locationSelect.value) || 0;
+    const val = locationSelect.value;
+    shippingCost = val === 'express' ? 0 : (parseInt(val) || 0);
     shippingLocation = selectedOption ? selectedOption.text : '';
     renderCart();
     if (window.shippingWarning) window.shippingWarning.style.display = 'none';
@@ -3269,6 +3264,31 @@ function closeMobileMenu() {
 
 
 <script>
+function calcGranel(input, precioPorKg) {
+    const card = input.closest('.product-card');
+    const gramos = parseFloat(input.value) || 0;
+    const precio = Math.round((gramos / 1000) * precioPorKg);
+    const priceDiv = card.querySelector('.product-price');
+    const btn = card.querySelector('.add-to-cart');
+    const nombreBase = card.querySelector('[data-es]').getAttribute('data-es');
+    priceDiv.textContent = '₡' + precio.toLocaleString('es-CR');
+    btn.dataset.price = precio;
+    btn.dataset.product = nombreBase + ' - ' + gramos + 'g';
+    if (gramos > 0) {
+        btn.disabled = false;
+        btn.style.background = '#000000';
+        btn.style.cursor = 'pointer';
+        btn.querySelector('span').setAttribute('data-es', 'Añadir');
+        btn.querySelector('span').textContent = 'Añadir';
+    } else {
+        btn.disabled = true;
+        btn.style.background = '#999';
+        btn.style.cursor = 'not-allowed';
+        btn.querySelector('span').setAttribute('data-es', 'Indicar gramos');
+        btn.querySelector('span').textContent = 'Indicar gramos';
+    }
+}
+
 function updateFlavorVariant(select, productBase) {
     const option = select.options[select.selectedIndex];
     const card = select.closest('.product-card');
